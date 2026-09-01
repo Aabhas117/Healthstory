@@ -9,19 +9,20 @@ export const KioskButton = ({
   disabled = false,
   ...props 
 }) => {
-  const baseClasses = 'kiosk-btn w-full inline-flex items-center justify-center gap-3 font-extrabold rounded-2xl transition-all duration-200 shadow-lg active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none text-base sm:text-lg tracking-wide';
+  const baseClasses = 'kiosk-btn w-full inline-flex items-center justify-center gap-2.5 font-extrabold rounded-xl transition-all duration-150 shadow-sm active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none text-base tracking-wide focus:outline-none focus:ring-2 focus:ring-sky-500/40';
   
   const variants = {
-    primary: 'bg-gradient-to-r from-teal-500 via-teal-400 to-emerald-400 text-slate-950 shadow-teal-500/25 hover:brightness-110 border border-teal-300/30',
-    secondary: 'bg-slate-800 hover:bg-slate-750 text-slate-100 border border-slate-700 shadow-slate-900/50',
-    danger: 'bg-gradient-to-r from-rose-600 to-red-500 text-white shadow-rose-600/30 hover:brightness-110 border border-rose-400/30',
-    accent: 'bg-gradient-to-r from-indigo-600 to-teal-600 text-white shadow-indigo-500/25 hover:brightness-110 border border-indigo-400/30'
+    primary: 'bg-sky-600 hover:bg-sky-700 text-white shadow-sky-600/20 border border-sky-500',
+    secondary: 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-750 shadow-sm',
+    teal: 'bg-teal-600 hover:bg-teal-700 text-white shadow-teal-600/20 border border-teal-500',
+    danger: 'bg-red-600 hover:bg-red-700 text-white shadow-red-600/20 border border-red-500',
+    accent: 'bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white border border-slate-800 dark:border-slate-200'
   };
 
   const sizes = {
-    md: 'py-3 px-5 min-h-[48px] text-sm',
-    lg: 'py-4 px-6 min-h-[56px] text-base',
-    xl: 'py-5 px-8 min-h-[64px] text-lg sm:text-xl'
+    md: 'py-2.5 px-4 min-h-[44px] text-sm',
+    lg: 'py-3.5 px-6 min-h-[52px] text-base',
+    xl: 'py-4 px-8 min-h-[60px] text-lg sm:text-xl'
   };
 
   return (
@@ -30,7 +31,7 @@ export const KioskButton = ({
       disabled={disabled}
       {...props}
     >
-      {Icon && <Icon className="w-6 h-6 shrink-0" />}
+      {Icon && <Icon className="w-5 h-5 shrink-0" />}
       <span>{children}</span>
     </button>
   );

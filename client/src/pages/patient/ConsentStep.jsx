@@ -19,48 +19,48 @@ export const ConsentStep = () => {
 
   return (
     <PatientLayout currentStep={4}>
-      <div className="flex-1 flex flex-col justify-between py-4 max-w-xl mx-auto w-full">
+      <div className="flex-1 flex flex-col justify-between py-4 max-w-lg mx-auto w-full">
         
         {/* Header */}
         <div className="text-center mb-6">
-          <div className="w-14 h-14 rounded-2xl bg-teal-500/10 text-teal-400 border border-teal-500/20 mx-auto flex items-center justify-center mb-3">
-            <Shield className="w-7 h-7" />
+          <div className="w-12 h-12 rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800 mx-auto flex items-center justify-center mb-3">
+            <Shield className="w-6 h-6" />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
             {t.consentTitle}
           </h1>
-          <p className="text-sm text-slate-300 mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 font-medium">
             Ayushman Bharat Digital Mission (ABDM) Data Privacy Terms
           </p>
         </div>
 
-        {/* Consent Card */}
-        <div className="bg-slate-900/90 p-6 rounded-2xl border border-slate-800 shadow-xl space-y-4 mb-6">
+        {/* Consent Information Card */}
+        <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 mb-6">
           
-          <div className="flex items-start gap-3 p-3.5 bg-slate-950 rounded-xl border border-slate-800">
-            <Lock className="w-5 h-5 text-teal-400 shrink-0 mt-0.5" />
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Your health history is encrypted end-to-end and stored securely under ABDM M2/M3 guidelines for clinical review by attending hospital doctors.
+          <div className="flex items-start gap-3 p-3 bg-slate-50 dark:bg-slate-950 rounded-lg border border-slate-200 dark:border-slate-800">
+            <Lock className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0 mt-0.5" />
+            <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+              Your health history is encrypted and securely saved under ABDM M2/M3 standards for clinical review by hospital doctors.
             </p>
           </div>
 
-          <div className="flex items-start gap-3 p-3.5 bg-amber-500/10 rounded-xl border border-amber-500/30 text-amber-200">
-            <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+          <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-950/40 rounded-lg border border-amber-200 dark:border-amber-800/60 text-amber-900 dark:text-amber-200">
+            <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
             <p className="text-xs leading-relaxed">
-              <strong className="text-amber-300 font-bold block mb-1">No AI Medical Diagnosis:</strong>
-              The AI intake assistant assists in collecting clinical history only. The AI is <strong>not a doctor</strong> and will not diagnose your condition.
+              <strong className="font-bold block mb-0.5">Non-Diagnostic AI Assistant:</strong>
+              The AI collects history only. The system is <strong>not a doctor</strong> and will not diagnose your condition.
             </p>
           </div>
 
-          {/* Interactive Checkbox */}
-          <label className="flex items-start gap-3 p-4 rounded-xl bg-slate-950 border-2 border-teal-500/40 cursor-pointer hover:border-teal-400 transition-all select-none">
+          {/* Interactive Consent Checkbox */}
+          <label className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border-2 border-sky-600/40 cursor-pointer hover:border-sky-500 transition-all select-none">
             <input
               type="checkbox"
               checked={consentGiven}
               onChange={(e) => setConsent(e.target.checked)}
-              className="w-6 h-6 rounded border-slate-700 text-teal-500 focus:ring-teal-500/30 accent-teal-500 shrink-0 mt-0.5"
+              className="w-5 h-5 rounded border-slate-300 text-sky-600 focus:ring-sky-500 shrink-0 mt-0.5"
             />
-            <span className="text-sm font-bold text-white leading-tight">
+            <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white leading-snug">
               {t.acceptConsent}
             </span>
           </label>
@@ -68,7 +68,7 @@ export const ConsentStep = () => {
         </div>
 
         {/* Action Button */}
-        <div className="pt-2">
+        <div>
           <KioskButton
             onClick={handleNext}
             disabled={!consentGiven}

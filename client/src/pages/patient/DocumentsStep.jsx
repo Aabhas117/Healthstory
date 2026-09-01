@@ -6,7 +6,7 @@ import { KioskButton } from '../../components/patient/KioskButton.jsx';
 import { ScannerAnimation } from '../../components/patient/ScannerAnimation.jsx';
 import { TRANSLATIONS } from '../../data/translations.js';
 import { api } from '../../services/api.js';
-import { Upload, FileText, CheckCircle, ArrowRight, Sparkles, Shield, Trash2 } from '../../lib/icons.jsx';
+import { Upload, FileText, CheckCircle, ArrowRight, Sparkles, Shield } from '../../lib/icons.jsx';
 
 export const DocumentsStep = () => {
   const navigate = useNavigate();
@@ -25,7 +25,6 @@ export const DocumentsStep = () => {
     const file = e.target.files ? e.target.files[0] : null;
     setIsUploadingDoc(true);
 
-    // Process via api.js
     const result = await api.patient.processDocument(file);
     setIsUploadingDoc(false);
 
@@ -39,81 +38,81 @@ export const DocumentsStep = () => {
 
   return (
     <PatientLayout currentStep={6}>
-      <div className="flex-1 flex flex-col justify-between py-4 max-w-xl mx-auto w-full space-y-6">
+      <div className="flex-1 flex flex-col justify-between py-4 max-w-xl mx-auto w-full space-y-5">
         
         {/* Header */}
         <div className="text-center">
-          <div className="w-14 h-14 rounded-2xl bg-teal-500/10 text-teal-400 border border-teal-500/20 mx-auto flex items-center justify-center mb-3">
-            <Upload className="w-7 h-7" />
+          <div className="w-12 h-12 rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800 mx-auto flex items-center justify-center mb-3">
+            <Upload className="w-6 h-6" />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
             {t.documentUploadTitle}
           </h1>
-          <p className="text-sm text-slate-300 mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 font-medium">
             Upload old prescriptions or lab reports to auto-extract medications
           </p>
         </div>
 
-        {/* Upload Zone & Scanner */}
+        {/* Upload Zone or Scanner */}
         {isUploadingDoc ? (
           <ScannerAnimation isScanning={true} />
         ) : (
-          <label className="border-2 border-dashed border-teal-500/40 hover:border-teal-400 bg-slate-900/80 rounded-3xl p-8 text-center cursor-pointer block transition-all hover:bg-slate-900 group kiosk-glow-teal">
+          <label className="border-2 border-dashed border-sky-300 dark:border-sky-800 hover:border-sky-500 bg-white dark:bg-slate-900 rounded-xl p-6 text-center cursor-pointer block transition-all shadow-sm group">
             <input
               type="file"
               accept="image/*,.pdf"
               onChange={handleFileUpload}
               className="hidden"
             />
-            <div className="w-16 h-16 rounded-2xl bg-teal-500/10 text-teal-400 border border-teal-500/20 mx-auto flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-              <Upload className="w-8 h-8" />
+            <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950 text-sky-600 dark:text-sky-400 border border-sky-200 dark:border-sky-800 mx-auto flex items-center justify-center mb-2">
+              <Upload className="w-6 h-6" />
             </div>
-            <p className="font-extrabold text-lg text-white mb-1">
+            <p className="font-extrabold text-base text-slate-900 dark:text-white mb-0.5">
               {t.uploadPrompt}
             </p>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Supports PDF, PNG, JPG (e.g. Previous Prescription Cardiology)
             </p>
           </label>
         )}
 
         {/* Processed Documents List */}
-        <div className="space-y-3">
-          <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-            <FileText className="w-4 h-4 text-teal-400" />
-            <span>Extracted Medical Artifacts ({uploadedDocuments.length})</span>
+        <div className="space-y-2">
+          <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+            <FileText className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+            <span>Extracted Medical Records ({uploadedDocuments.length})</span>
           </h3>
 
           {uploadedDocuments.map((doc) => (
             <div
               key={doc.id}
-              className="bg-slate-900 p-4 rounded-2xl border border-slate-800 space-y-2 shadow-lg"
+              className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5" />
+                  <div className="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 flex items-center justify-center font-bold">
+                    <CheckCircle className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-sm text-white">{doc.name}</h4>
-                    <p className="text-xs text-slate-400">OCR Extraction Complete</p>
+                    <h4 className="font-bold text-xs text-slate-900 dark:text-white">{doc.name}</h4>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">OCR Extraction Complete</p>
                   </div>
                 </div>
-                <span className="text-[10px] font-bold uppercase bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-500/30">
+                <span className="text-[10px] font-bold uppercase bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
                   Processed
                 </span>
               </div>
 
               {/* Extracted Key Items */}
               {doc.extractedData && (
-                <div className="bg-slate-950 p-3 rounded-xl border border-slate-800 text-xs space-y-1.5 mt-2">
-                  <div className="flex items-center justify-between text-slate-300">
-                    <span className="text-slate-400 font-medium">Extracted Medication:</span>
-                    <strong className="text-teal-300">{doc.extractedData.medications.join(', ')}</strong>
+                <div className="bg-slate-50 dark:bg-slate-950 p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 text-xs space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500">Medication:</span>
+                    <strong className="text-sky-700 dark:text-sky-400">{doc.extractedData.medications.join(', ')}</strong>
                   </div>
-                  <div className="flex items-center justify-between text-slate-300">
-                    <span className="text-slate-400 font-medium">Documented Allergy:</span>
-                    <strong className="text-rose-400">{doc.extractedData.allergies.join(', ')}</strong>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500">Allergies:</span>
+                    <strong className="text-red-600 dark:text-red-400">{doc.extractedData.allergies.join(', ')}</strong>
                   </div>
                 </div>
               )}
@@ -122,7 +121,7 @@ export const DocumentsStep = () => {
         </div>
 
         {/* Action Button */}
-        <div className="pt-2">
+        <div>
           <KioskButton
             onClick={handleNextStep}
             icon={ArrowRight}

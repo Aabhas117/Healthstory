@@ -3,24 +3,24 @@ import { Mic } from '../../lib/icons.jsx';
 
 export const VoiceWaveAnimation = ({ isRecording = false, onToggle = () => {} }) => {
   return (
-    <div className="flex flex-col items-center justify-center py-6">
+    <div className="flex flex-col items-center justify-center py-4">
       <button
         onClick={onToggle}
-        className={`w-28 h-28 sm:w-32 sm:h-32 rounded-full flex items-center justify-center transition-all duration-300 shadow-2xl relative ${
+        className={`w-24 h-24 sm:w-28 sm:h-28 rounded-full flex items-center justify-center transition-all duration-200 shadow-md relative ${
           isRecording
-            ? 'bg-rose-600 text-white animate-mic-pulse ring-8 ring-rose-500/30'
-            : 'bg-gradient-to-tr from-teal-500 to-emerald-400 text-slate-950 hover:scale-105 shadow-teal-500/30 ring-4 ring-teal-500/20'
+            ? 'bg-red-600 text-white ring-4 ring-red-300 dark:ring-red-900/60'
+            : 'bg-sky-600 hover:bg-sky-700 text-white shadow-sky-600/20 ring-4 ring-sky-100 dark:ring-sky-950'
         }`}
       >
-        <Mic className={`w-12 h-12 sm:w-14 sm:h-14 ${isRecording ? 'animate-bounce' : ''}`} />
+        <Mic className="w-10 h-10 sm:w-12 sm:h-12" />
       </button>
 
-      <div className="mt-4 text-center">
-        <p className={`font-extrabold text-lg sm:text-xl ${isRecording ? 'text-rose-400 animate-pulse' : 'text-teal-300'}`}>
-          {isRecording ? 'Recording Live Voice... Speak Now' : 'Tap Microphone to Speak'}
+      <div className="mt-3 text-center">
+        <p className={`font-bold text-base sm:text-lg ${isRecording ? 'text-red-600 dark:text-red-400' : 'text-sky-700 dark:text-sky-400'}`}>
+          {isRecording ? 'Recording Audio... Tap to Stop' : 'Tap Microphone to Speak'}
         </p>
-        <p className="text-xs text-slate-400 mt-1">
-          {isRecording ? 'Listening in Hindi / English...' : 'Touch input is also supported below'}
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+          {isRecording ? 'Listening in Hindi / English...' : 'Voice recognition helper'}
         </p>
       </div>
     </div>

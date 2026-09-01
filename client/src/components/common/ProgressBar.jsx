@@ -18,30 +18,30 @@ export const ProgressBar = ({ currentStep = 1 }) => {
   const percentage = Math.round((currentStep / PATIENT_STEPS.length) * 100);
 
   return (
-    <div className="w-full bg-slate-900/90 border-b border-slate-800 py-3 px-4 shadow-inner">
+    <div className="w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 py-3 px-4 shadow-sm">
       <div className="max-w-4xl mx-auto">
         
         {/* Step Percentage & Label Header */}
-        <div className="flex items-center justify-between text-xs font-semibold text-slate-300 mb-2">
+        <div className="flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
           <div className="flex items-center gap-2">
-            <span className="w-6 h-6 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30 flex items-center justify-center text-xs font-bold">
+            <span className="w-6 h-6 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800 flex items-center justify-center text-xs font-bold">
               {currentStep}
             </span>
-            <span className="text-teal-400 font-bold uppercase tracking-wider text-[11px]">
+            <span className="text-sky-700 dark:text-sky-400 font-bold uppercase tracking-wider text-[11px]">
               Step {currentStep} of {PATIENT_STEPS.length}
             </span>
-            <span className="text-slate-500">|</span>
-            <span className="text-slate-200">
+            <span className="text-slate-400">|</span>
+            <span className="text-slate-900 dark:text-white font-bold">
               {language === 'hi' ? PATIENT_STEPS[currentStep - 1]?.labelHi : PATIENT_STEPS[currentStep - 1]?.labelEn}
             </span>
           </div>
-          <span className="text-teal-400 font-bold">{percentage}% Complete</span>
+          <span className="text-sky-600 dark:text-sky-400 font-bold">{percentage}% Complete</span>
         </div>
 
         {/* Progress Bar Track */}
-        <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden relative p-0.5 border border-slate-700/50">
+        <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden relative border border-slate-200 dark:border-slate-700">
           <div 
-            className="h-full bg-gradient-to-r from-teal-500 via-emerald-400 to-teal-300 rounded-full transition-all duration-500 ease-out shadow-sm shadow-teal-500/50"
+            className="h-full bg-sky-600 rounded-full transition-all duration-300 ease-out"
             style={{ width: `${percentage}%` }}
           />
         </div>
@@ -57,18 +57,18 @@ export const ProgressBar = ({ currentStep = 1 }) => {
                 key={step.id} 
                 className={`flex items-center gap-1.5 text-[11px] font-medium transition-colors ${
                   isCurrent 
-                    ? 'text-teal-300 font-bold' 
+                    ? 'text-sky-700 dark:text-sky-300 font-bold' 
                     : isCompleted 
-                    ? 'text-emerald-400' 
-                    : 'text-slate-500'
+                    ? 'text-emerald-700 dark:text-emerald-400' 
+                    : 'text-slate-400 dark:text-slate-500'
                 }`}
               >
                 <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] ${
                   isCurrent 
-                    ? 'bg-teal-500 text-slate-950 font-bold ring-2 ring-teal-400/40' 
+                    ? 'bg-sky-600 text-white font-bold' 
                     : isCompleted 
-                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40' 
-                    : 'bg-slate-800 text-slate-500'
+                    ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800' 
+                    : 'bg-slate-200 dark:bg-slate-800 text-slate-500'
                 }`}>
                   {isCompleted ? <Check className="w-2.5 h-2.5 stroke-[3]" /> : step.id}
                 </span>
