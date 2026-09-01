@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { DoctorLayout } from '../../layouts/DoctorLayout.jsx';
 import { useParams, useNavigate } from '../../lib/router.jsx';
 import { useDoctorStore } from '../../store/useDoctorStore.js';
-import { RedFlagBanner } from '../../components/common/UIComponents.jsx';
+import { RedFlagBanner } from '../../components/patient/RedFlagBanner.jsx';
+import { LoadingSpinner } from '../../components/common/LoadingSpinner.jsx';
 import { api } from '../../services/api.js';
 import { DEMO_PATIENT } from '../../data/mockPatients.js';
 import { Stethoscope, User, ArrowLeft, CheckCircle, FileText, Activity, Shield, AlertTriangle, Sparkles } from '../../lib/icons.jsx';
@@ -29,8 +30,8 @@ export const PatientDetail = () => {
   if (loading || !patient) {
     return (
       <DoctorLayout>
-        <div className="flex items-center justify-center py-20 text-teal-400 font-bold text-lg animate-pulse">
-          Loading Clinical Case Sheet...
+        <div className="py-20">
+          <LoadingSpinner label="Loading Clinical Case Sheet..." size="lg" />
         </div>
       </DoctorLayout>
     );

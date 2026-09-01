@@ -2,7 +2,7 @@ import React from 'react';
 import { PatientLayout } from '../../layouts/PatientLayout.jsx';
 import { useNavigate } from '../../lib/router.jsx';
 import { usePatientStore } from '../../store/usePatientStore.js';
-import { KioskButton } from '../../components/common/UIComponents.jsx';
+import { KioskButton } from '../../components/patient/KioskButton.jsx';
 import { TRANSLATIONS } from '../../data/translations.js';
 import { User, ArrowRight, Shield, Phone, Sparkles } from '../../lib/icons.jsx';
 

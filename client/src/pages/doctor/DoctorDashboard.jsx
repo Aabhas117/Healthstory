@@ -2,6 +2,7 @@ import React from 'react';
 import { DoctorLayout } from '../../layouts/DoctorLayout.jsx';
 import { useNavigate } from '../../lib/router.jsx';
 import { useDoctorStore } from '../../store/useDoctorStore.js';
+import { EmptyState } from '../../components/common/EmptyState.jsx';
 import { Stethoscope, AlertTriangle, Search, Filter, Clock, ChevronRight, User, Shield, CheckCircle } from '../../lib/icons.jsx';
 
 export const DoctorDashboard = () => {
@@ -73,88 +74,98 @@ export const DoctorDashboard = () => {
         </div>
 
         {/* Triage Queue Patient List */}
-        <div className="space-y-3">
-          {filteredPatients.map((patient) => {
-            const isRedFlag = patient.aiSummary?.redFlagAlert;
+        {filteredPatients.length === 0 ? (
+          <EmptyState
+            icon={Search}
+            title="No Matching Patients"
+            description="No patient record matches your search query or red flag filter criteria."
+            actionLabel="Clear Filters"
+            onAction={() => { setSearchQuery(''); setFilterRedFlagsOnly(false); }}
+          />
+        ) : (
+          <div className="space-y-3">
+            {filteredPatients.map((patient) => {
+              const isRedFlag = patient.aiSummary?.redFlagAlert;
 
-            return (
-              <div
-                key={patient.id}
-                onClick={() => handleOpenPatient(patient.id)}
-                className={`p-5 rounded-2xl border-2 transition-all cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-lg group hover:scale-[1.005] ${
-                  isRedFlag
-                    ? 'bg-rose-950/40 border-rose-500/60 hover:border-rose-400'
-                    : 'bg-slate-900/90 border-slate-800 hover:border-teal-500/50'
-                }`}
-              >
-                {/* Left: Patient Meta & Symptoms */}
-                <div className="flex items-start gap-4">
-                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 font-extrabold text-lg ${
-                    isRedFlag ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40' : 'bg-teal-500/10 text-teal-400 border border-teal-500/20'
-                  }`}>
-                    {patient.tokenNumber || patient.id}
+              return (
+                <div
+                  key={patient.id}
+                  onClick={() => handleOpenPatient(patient.id)}
+                  className={`p-5 rounded-2xl border-2 transition-all cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-lg group hover:scale-[1.005] ${
+                    isRedFlag
+                      ? 'bg-rose-950/40 border-rose-500/60 hover:border-rose-400'
+                      : 'bg-slate-900/90 border-slate-800 hover:border-teal-500/50'
+                  }`}
+                >
+                  {/* Left: Patient Meta & Symptoms */}
+                  <div className="flex items-start gap-4">
+                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 font-extrabold text-lg ${
+                      isRedFlag ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40' : 'bg-teal-500/10 text-teal-400 border border-teal-500/20'
+                    }`}>
+                      {patient.tokenNumber || patient.id}
+                    </div>
+
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="font-extrabold text-lg text-white group-hover:text-teal-300 transition-colors">
+                          {patient.name}
+                        </h3>
+                        <span className="text-xs text-slate-400 font-medium">
+                          ({patient.age} yrs, {patient.gender})
+                        </span>
+
+                        {isRedFlag && (
+                          <span className="bg-rose-500 text-slate-950 font-black text-[10px] uppercase px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow">
+                            <AlertTriangle className="w-3 h-3" /> Potential Red Flag
+                          </span>
+                        )}
+                      </div>
+
+                      <p className="text-sm font-semibold text-slate-200">
+                        Chief Concern: <span className="text-teal-300">{patient.complaint}</span>
+                      </p>
+
+                      {/* Symptom Badges */}
+                      <div className="flex flex-wrap gap-1.5 mt-2">
+                        {patient.symptoms.map((s) => (
+                          <span
+                            key={s}
+                            className={`text-xs px-2.5 py-0.5 rounded-md font-semibold ${
+                              isRedFlag && (s.includes('Chest') || s.includes('Breath') || s.includes('Sweat'))
+                                ? 'bg-rose-900/60 text-rose-200 border border-rose-700/60'
+                                : 'bg-slate-800 text-slate-300 border border-slate-700'
+                            }`}
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
 
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-extrabold text-lg text-white group-hover:text-teal-300 transition-colors">
-                        {patient.name}
-                      </h3>
-                      <span className="text-xs text-slate-400 font-medium">
-                        ({patient.age} yrs, {patient.gender})
+                  {/* Right: AI Summary Snapshot & Action */}
+                  <div className="flex items-center justify-between md:justify-end gap-4 border-t md:border-t-0 border-slate-800 pt-3 md:pt-0">
+                    <div className="text-left md:text-right text-xs">
+                      <span className="text-slate-400 block">Status:</span>
+                      <strong className={`font-bold ${isRedFlag ? 'text-rose-400' : 'text-emerald-400'}`}>
+                        {patient.status}
+                      </strong>
+                      <span className="text-[10px] text-slate-500 block mt-0.5">
+                        Intake Time: {patient.createdTime || '10:30 AM'}
                       </span>
-
-                      {isRedFlag && (
-                        <span className="bg-rose-500 text-slate-950 font-black text-[10px] uppercase px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow">
-                          <AlertTriangle className="w-3 h-3" /> Potential Red Flag
-                        </span>
-                      )}
                     </div>
 
-                    <p className="text-sm font-semibold text-slate-200">
-                      Chief Concern: <span className="text-teal-300">{patient.complaint}</span>
-                    </p>
-
-                    {/* Symptom Badges */}
-                    <div className="flex flex-wrap gap-1.5 mt-2">
-                      {patient.symptoms.map((s) => (
-                        <span
-                          key={s}
-                          className={`text-xs px-2.5 py-0.5 rounded-md font-semibold ${
-                            isRedFlag && (s.includes('Chest') || s.includes('Breath') || s.includes('Sweat'))
-                              ? 'bg-rose-900/60 text-rose-200 border border-rose-700/60'
-                              : 'bg-slate-800 text-slate-300 border border-slate-700'
-                          }`}
-                        >
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right: AI Summary Snapshot & Action */}
-                <div className="flex items-center justify-between md:justify-end gap-4 border-t md:border-t-0 border-slate-800 pt-3 md:pt-0">
-                  <div className="text-left md:text-right text-xs">
-                    <span className="text-slate-400 block">Status:</span>
-                    <strong className={`font-bold ${isRedFlag ? 'text-rose-400' : 'text-emerald-400'}`}>
-                      {patient.status}
-                    </strong>
-                    <span className="text-[10px] text-slate-500 block mt-0.5">
-                      Intake Time: {patient.createdTime || '10:30 AM'}
-                    </span>
+                    <button className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-teal-500/10 text-teal-300 border border-teal-500/30 group-hover:bg-teal-500 group-hover:text-slate-950 font-extrabold text-xs transition-all shadow">
+                      <span>Review Case Sheet</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
                   </div>
 
-                  <button className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-teal-500/10 text-teal-300 border border-teal-500/30 group-hover:bg-teal-500 group-hover:text-slate-950 font-extrabold text-xs transition-all shadow">
-                    <span>Review Case Sheet</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
                 </div>
-
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
 
       </div>
     </DoctorLayout>
