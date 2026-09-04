@@ -24,12 +24,12 @@ export const AdminAudit = () => {
           badgeText="DPDP Act 2023 Compliant"
         />
 
-        <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
-          <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
-            <h2 className="text-sm font-bold text-slate-900 dark:text-white">
+        <div className="bg-white rounded-2xl border border-[#DCEAF0] shadow-xs overflow-hidden">
+          <div className="px-6 py-4 border-b border-[#EEF6F9] flex items-center justify-between">
+            <h2 className="text-sm font-bold text-[#17324D]">
               Audit Events Log ({auditLogs.length})
             </h2>
-            <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
+            <span className="text-xs font-mono text-[#536B7D]">
               Encrypted Log Stream
             </span>
           </div>
@@ -37,7 +37,7 @@ export const AdminAudit = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-bold">
+                <tr className="bg-[#F5FAFC] border-b border-[#DCEAF0] text-[#536B7D] uppercase tracking-wider font-bold">
                   <th className="py-3 px-4">Audit ID</th>
                   <th className="py-3 px-4">Timestamp</th>
                   <th className="py-3 px-4">Action</th>
@@ -46,23 +46,23 @@ export const AdminAudit = () => {
                   <th className="py-3 px-4 text-center">Triage Alert</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200 dark:divide-slate-800 font-medium text-slate-800 dark:text-slate-200">
+              <tbody className="divide-y divide-[#EEF6F9] font-medium text-[#17324D]">
                 {auditLogs.map((log) => (
                   <tr
                     key={log.id}
-                    className="hover:bg-slate-50 dark:hover:bg-slate-850 transition-colors"
+                    className="hover:bg-[#F5FAFC] transition-colors"
                   >
-                    <td className="py-3.5 px-4 font-mono font-bold text-sky-700 dark:text-sky-400">
+                    <td className="py-3.5 px-4 font-mono font-bold text-[#20B8C8]">
                       {log.id}
                     </td>
-                    <td className="py-3.5 px-4 font-mono text-slate-500 dark:text-slate-400">
+                    <td className="py-3.5 px-4 font-mono text-[#536B7D]">
                       {new Date(log.timestamp).toLocaleString()}
                     </td>
-                    <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white">
+                    <td className="py-3.5 px-4 font-bold text-[#17324D]">
                       {log.action}
                     </td>
                     <td className="py-3.5 px-4">{log.patientId}</td>
-                    <td className="py-3.5 px-4 text-slate-500 dark:text-slate-400">
+                    <td className="py-3.5 px-4 text-[#536B7D]">
                       {log.kioskId}
                     </td>
                     <td className="py-3.5 px-4 text-center">

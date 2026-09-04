@@ -18,20 +18,20 @@ export const ProgressBar = ({ currentStep = 1 }) => {
   const percentage = Math.round((currentStep / PATIENT_STEPS.length) * 100);
 
   return (
-    <div className="w-full bg-white dark:bg-slate-900 border-b border-[#DCEAF0] dark:border-slate-800 py-3 px-4 shadow-xs">
+    <div className="w-full bg-white border-b border-[#DCEAF0] py-3 px-4 shadow-xs">
       <div className="max-w-4xl mx-auto">
         
         {/* Step Percentage & Label Header */}
-        <div className="flex items-center justify-between text-xs font-semibold text-[#17324D] dark:text-slate-300 mb-2">
+        <div className="flex items-center justify-between text-xs font-semibold text-[#17324D] mb-2">
           <div className="flex items-center gap-2">
-            <span className="w-6 h-6 rounded-full bg-[#E6F7F9] dark:bg-slate-800 text-[#20B8C8] border border-[#20B8C8]/30 flex items-center justify-center text-xs font-bold">
+            <span className="w-6 h-6 rounded-full bg-[#E6F7F9] text-[#20B8C8] border border-[#20B8C8]/30 flex items-center justify-center text-xs font-bold">
               0{currentStep}
             </span>
             <span className="text-[#20B8C8] font-bold uppercase tracking-wider text-[11px]">
               Step 0{currentStep} of 0{PATIENT_STEPS.length}
             </span>
             <span className="text-[#7A8D9D]">|</span>
-            <span className="text-[#17324D] dark:text-white font-bold">
+            <span className="text-[#17324D] font-bold">
               {language === 'hi' ? PATIENT_STEPS[currentStep - 1]?.labelHi : PATIENT_STEPS[currentStep - 1]?.labelEn}
             </span>
           </div>
@@ -39,7 +39,7 @@ export const ProgressBar = ({ currentStep = 1 }) => {
         </div>
 
         {/* Progress Bar Track */}
-        <div className="w-full h-2 bg-[#EEF6F9] dark:bg-slate-800 rounded-full overflow-hidden relative border border-[#DCEAF0] dark:border-slate-700">
+        <div className="w-full h-2 bg-[#EEF6F9] rounded-full overflow-hidden relative border border-[#DCEAF0]">
           <div 
             className="h-full bg-[#20B8C8] rounded-full transition-all duration-300 ease-out"
             style={{ width: `${percentage}%` }}
@@ -59,7 +59,7 @@ export const ProgressBar = ({ currentStep = 1 }) => {
                   isCurrent 
                     ? 'text-[#20B8C8] font-bold' 
                     : isCompleted 
-                    ? 'text-[#0D9488] font-semibold' 
+                    ? 'text-[#20B8C8] font-semibold' 
                     : 'text-[#7A8D9D]'
                 }`}
               >
@@ -67,7 +67,7 @@ export const ProgressBar = ({ currentStep = 1 }) => {
                   isCurrent 
                     ? 'bg-[#20B8C8] text-white font-bold' 
                     : isCompleted 
-                    ? 'bg-[#E6F7F9] text-[#0D9488] border border-[#0D9488]/30' 
+                    ? 'bg-[#E6F7F9] text-[#20B8C8] border border-[#20B8C8]/30' 
                     : 'bg-[#EEF6F9] text-[#7A8D9D]'
                 }`}>
                   {isCompleted ? <Check className="w-2.5 h-2.5 stroke-[3]" /> : step.id}

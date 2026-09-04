@@ -26,7 +26,7 @@ export const Header = ({ onToggleMobileSidebar = () => {} }) => {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-[#DCEAF0] dark:border-slate-800 text-[#17324D] dark:text-slate-100 shadow-xs">
+    <header className="sticky top-0 z-40 bg-white border-b border-[#DCEAF0] text-[#17324D] shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 gap-4">
           
@@ -34,7 +34,7 @@ export const Header = ({ onToggleMobileSidebar = () => {} }) => {
           <div className="flex items-center gap-6">
             <button
               onClick={onToggleMobileSidebar}
-              className="md:hidden p-2 rounded-lg text-[#536B7D] dark:text-slate-300 hover:bg-[#F5FAFC] dark:hover:bg-slate-800"
+              className="md:hidden p-2 rounded-lg text-[#536B7D] hover:bg-[#F5FAFC]"
               aria-label="Toggle Navigation Sidebar"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,17 +51,17 @@ export const Header = ({ onToggleMobileSidebar = () => {} }) => {
                 <Heart className="w-5 h-5 fill-white" />
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold text-xl text-[#17324D] dark:text-white tracking-tight leading-none">
+                <span className="font-extrabold text-xl text-[#17324D] tracking-tight leading-none">
                   AyuDrishti
                 </span>
-                <span className="text-[10px] font-semibold text-[#536B7D] dark:text-slate-400 mt-0.5">
+                <span className="text-[10px] font-semibold text-[#536B7D] mt-0.5">
                   Clinical History &amp; Triage
                 </span>
               </div>
             </div>
 
             {/* Desktop Top Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1 pl-4 border-l border-[#DCEAF0] dark:border-slate-800">
+            <nav className="hidden lg:flex items-center gap-1 pl-4 border-l border-[#DCEAF0]">
               {navLinks.map((link) => {
                 const isActive = location.pathname.startsWith(link.path);
                 return (
@@ -70,8 +70,8 @@ export const Header = ({ onToggleMobileSidebar = () => {} }) => {
                     onClick={() => navigate(link.path)}
                     className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                       isActive
-                        ? "bg-[#E6F7F9] text-[#20B8C8] dark:bg-slate-800 dark:text-[#20B8C8]"
-                        : "text-[#536B7D] dark:text-slate-300 hover:text-[#17324D] dark:hover:text-white hover:bg-[#F5FAFC] dark:hover:bg-slate-800/60"
+                        ? "bg-[#E6F7F9] text-[#20B8C8]"
+                        : "text-[#536B7D] hover:text-[#17324D] hover:bg-[#F5FAFC]"
                     }`}
                   >
                     {link.label}
@@ -89,7 +89,7 @@ export const Header = ({ onToggleMobileSidebar = () => {} }) => {
                 type="text"
                 placeholder="Search patient, ABHA or encounter ID..."
                 onClick={() => navigate("/doctor/dashboard")}
-                className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-[#F5FAFC] dark:bg-slate-950 border border-[#DCEAF0] dark:border-slate-800 text-xs text-[#17324D] dark:text-slate-100 placeholder-[#7A8D9D] focus:outline-none focus:border-[#20B8C8]"
+                className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-[#F5FAFC] border border-[#DCEAF0] text-xs text-[#17324D] placeholder-[#7A8D9D] focus:outline-none focus:border-[#20B8C8]"
               />
             </div>
           )}
@@ -97,13 +97,13 @@ export const Header = ({ onToggleMobileSidebar = () => {} }) => {
           {/* Right Action Controls */}
           <div className="flex items-center gap-3">
             {/* Language Toggle (Hindi / English) */}
-            <div className="flex items-center bg-[#F5FAFC] dark:bg-slate-800 rounded-xl p-1 border border-[#DCEAF0] dark:border-slate-700">
+            <div className="flex items-center bg-[#F5FAFC] rounded-xl p-1 border border-[#DCEAF0]">
               <button
                 onClick={() => setLanguage("hi")}
                 className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${
                   language === "hi"
                     ? "bg-[#20B8C8] text-white shadow-xs"
-                    : "text-[#536B7D] dark:text-slate-400 hover:text-[#17324D] dark:hover:text-slate-200"
+                    : "text-[#536B7D] hover:text-[#17324D]"
                 }`}
               >
                 हिंदी
@@ -113,7 +113,7 @@ export const Header = ({ onToggleMobileSidebar = () => {} }) => {
                 className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${
                   language === "en"
                     ? "bg-[#20B8C8] text-white shadow-xs"
-                    : "text-[#536B7D] dark:text-slate-400 hover:text-[#17324D] dark:hover:text-slate-200"
+                    : "text-[#536B7D] hover:text-[#17324D]"
                 }`}
               >
                 EN
@@ -124,16 +124,16 @@ export const Header = ({ onToggleMobileSidebar = () => {} }) => {
             {!isPatientPath && (
               <div
                 onClick={() => navigate("/doctor/dashboard")}
-                className="hidden sm:flex items-center gap-2 pl-2 border-l border-[#DCEAF0] dark:border-slate-800 cursor-pointer"
+                className="hidden sm:flex items-center gap-2 pl-2 border-l border-[#DCEAF0] cursor-pointer"
               >
-                <div className="w-8 h-8 rounded-full bg-[#E6F7F9] dark:bg-slate-800 border border-[#20B8C8]/30 text-[#20B8C8] flex items-center justify-center font-bold text-xs">
+                <div className="w-8 h-8 rounded-full bg-[#E6F7F9] border border-[#20B8C8]/30 text-[#20B8C8] flex items-center justify-center font-bold text-xs">
                   DR
                 </div>
                 <div className="text-left text-xs leading-none">
-                  <strong className="text-[#17324D] dark:text-white font-bold block">
+                  <strong className="text-[#17324D] font-bold block">
                     Dr. V. Sharma
                   </strong>
-                  <span className="text-[10px] text-[#536B7D] dark:text-slate-400">
+                  <span className="text-[10px] text-[#536B7D]">
                     Cardiology OPD
                   </span>
                 </div>

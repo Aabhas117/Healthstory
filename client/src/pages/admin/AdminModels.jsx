@@ -17,10 +17,10 @@ export const AdminModels = () => {
           badgeText="Guardrails Enforced"
         />
 
-        <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+        <div className="bg-white p-6 rounded-2xl border border-[#DCEAF0] shadow-xs space-y-6">
           {/* Active Model Selector */}
           <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+            <label className="block text-xs font-bold text-[#536B7D] uppercase tracking-wider">
               Active Clinical LLM Engine
             </label>
             <select
@@ -28,7 +28,7 @@ export const AdminModels = () => {
               onChange={(e) =>
                 updateModelConfig({ activeModel: e.target.value })
               }
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-semibold text-xs focus:outline-none focus:border-sky-500"
+              className="w-full px-4 py-2.5 rounded-xl bg-[#F5FAFC] border border-[#DCEAF0] text-[#17324D] font-semibold text-xs focus:outline-none focus:border-[#20B8C8]"
             >
               <option value="MedLLM-v3.4-Clinical-India">
                 MedLLM-v3.4-Clinical-India (Optimized for Hindi/English)
@@ -44,9 +44,9 @@ export const AdminModels = () => {
 
           {/* System Prompt Rules */}
           <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center justify-between">
+            <label className="block text-xs font-bold text-[#536B7D] uppercase tracking-wider flex items-center justify-between">
               <span>System Prompt Guardrails</span>
-              <span className="text-[10px] text-amber-600 dark:text-amber-400 font-mono">
+              <span className="text-[10px] text-amber-600 font-mono">
                 Strict Non-Diagnosis Rule
               </span>
             </label>
@@ -56,16 +56,16 @@ export const AdminModels = () => {
               onChange={(e) =>
                 updateModelConfig({ systemPrompt: e.target.value })
               }
-              className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-200 font-mono text-xs focus:outline-none focus:border-sky-500"
+              className="w-full p-3.5 rounded-xl bg-[#F5FAFC] border border-[#DCEAF0] text-[#17324D] font-mono text-xs focus:outline-none focus:border-[#20B8C8]"
             />
           </div>
 
           {/* Parameters Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-              <div className="flex justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
+            <div className="bg-[#F5FAFC] p-4 rounded-xl border border-[#DCEAF0] space-y-2">
+              <div className="flex justify-between text-xs font-bold text-[#536B7D]">
                 <span>Temperature (Hallucination Control):</span>
-                <span className="text-sky-600 dark:text-sky-400">
+                <span className="text-[#20B8C8]">
                   {modelsConfig.temperature}
                 </span>
               </div>
@@ -78,14 +78,14 @@ export const AdminModels = () => {
                 onChange={(e) =>
                   updateModelConfig({ temperature: parseFloat(e.target.value) })
                 }
-                className="w-full accent-sky-600"
+                className="w-full accent-[#20B8C8]"
               />
             </div>
 
-            <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-              <div className="flex justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
+            <div className="bg-[#F5FAFC] p-4 rounded-xl border border-[#DCEAF0] space-y-2">
+              <div className="flex justify-between text-xs font-bold text-[#536B7D]">
                 <span>Max Output Tokens:</span>
-                <span className="text-sky-600 dark:text-sky-400">
+                <span className="text-[#20B8C8]">
                   {modelsConfig.maxTokens}
                 </span>
               </div>
@@ -98,7 +98,7 @@ export const AdminModels = () => {
                 onChange={(e) =>
                   updateModelConfig({ maxTokens: parseInt(e.target.value) })
                 }
-                className="w-full accent-sky-600"
+                className="w-full accent-[#20B8C8]"
               />
             </div>
           </div>

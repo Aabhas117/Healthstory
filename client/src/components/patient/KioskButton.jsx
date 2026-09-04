@@ -13,11 +13,11 @@ export const IntakeButton = ({
   
   const variants = {
     primary: 'bg-[#20B8C8] hover:bg-[#1A9FA9] text-white shadow-xs border border-[#1FAAB9]',
-    secondary: 'bg-white dark:bg-slate-900 text-[#17324D] dark:text-white border border-[#DCEAF0] dark:border-slate-700 hover:bg-[#F5FAFC] dark:hover:bg-slate-800 shadow-xs',
+    secondary: 'bg-white text-[#17324D] border border-[#DCEAF0] hover:bg-[#F5FAFC] shadow-xs',
     teal: 'bg-[#20B8C8] hover:bg-[#1A9FA9] text-white shadow-xs border border-[#1FAAB9]',
     blue: 'bg-[#2499D6] hover:bg-[#1D82B8] text-white shadow-xs border border-[#208CC4]',
     danger: 'bg-[#DC2626] hover:bg-[#B91C1C] text-white shadow-xs border border-[#B91C1C]',
-    accent: 'bg-[#17324D] dark:bg-slate-100 text-white dark:text-[#17324D] hover:bg-[#0F2338] dark:hover:bg-white border border-[#17324D] dark:border-slate-200'
+    accent: 'bg-[#17324D] text-white hover:bg-[#0F2338] border border-[#17324D]'
   };
 
   const sizes = {

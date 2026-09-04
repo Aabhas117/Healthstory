@@ -9,16 +9,16 @@ export const EmptyState = ({
   onAction 
 }) => {
   return (
-    <div className="bg-slate-900/80 p-8 rounded-3xl border border-slate-800 text-center flex flex-col items-center justify-center max-w-md mx-auto my-6 space-y-3 shadow-xl">
-      <div className="w-14 h-14 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400">
+    <div className="bg-white p-8 rounded-2xl border border-[#DCEAF0] text-center flex flex-col items-center justify-center max-w-md mx-auto my-6 space-y-3 shadow-xs">
+      <div className="w-14 h-14 rounded-2xl bg-[#F5FAFC] border border-[#DCEAF0] flex items-center justify-center text-[#20B8C8]">
         <Icon className="w-7 h-7" />
       </div>
-      <h3 className="text-lg font-bold text-white">{title}</h3>
-      <p className="text-xs text-slate-400 leading-relaxed">{description}</p>
+      <h3 className="text-lg font-bold text-[#17324D]">{title}</h3>
+      <p className="text-xs text-[#536B7D] leading-relaxed">{description}</p>
       {actionLabel && onAction && (
         <button
           onClick={onAction}
-          className="mt-2 px-4 py-2 rounded-xl bg-teal-500 text-slate-950 font-bold text-xs hover:bg-teal-400 transition-all shadow"
+          className="mt-2 px-4 py-2 rounded-xl bg-[#20B8C8] text-white font-bold text-xs hover:bg-[#1CA6B4] transition-all shadow-xs"
         >
           {actionLabel}
         </button>

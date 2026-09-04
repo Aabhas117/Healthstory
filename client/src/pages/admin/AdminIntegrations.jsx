@@ -62,33 +62,33 @@ export const AdminIntegrations = () => {
           badgeText="System Status"
         />
 
-        <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+        <div className="bg-white p-6 rounded-2xl border border-[#DCEAF0] shadow-xs space-y-4">
           {allIntegrations.map((item) => {
             const isActive = item.status.includes("Active");
             return (
               <div
                 key={item.id}
-                className="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                className="bg-[#F5FAFC] p-4 rounded-xl border border-[#DCEAF0] flex flex-col sm:flex-row sm:items-center justify-between gap-4"
               >
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <h3 className="font-extrabold text-sm text-slate-900 dark:text-white">
+                    <h3 className="font-extrabold text-sm text-[#17324D]">
                       {item.name}
                     </h3>
                     <span
-                      className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded border ${
+                      className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-lg border ${
                         isActive
-                          ? "bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800"
-                          : "bg-slate-100 dark:bg-slate-800 text-slate-500 border-slate-200 dark:border-slate-700"
+                          ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                          : "bg-[#EEF6F9] text-[#536B7D] border-[#DCEAF0]"
                       }`}
                     >
                       {item.status}
                     </span>
                   </div>
-                  <p className="text-xs font-mono text-slate-500 dark:text-slate-400">
+                  <p className="text-xs font-mono text-[#536B7D]">
                     {item.endpoint}
                   </p>
-                  <p className="text-[11px] text-sky-700 dark:text-sky-400 font-semibold">
+                  <p className="text-[11px] text-[#20B8C8] font-semibold">
                     Mode: {item.mode}
                   </p>
                 </div>
@@ -97,8 +97,8 @@ export const AdminIntegrations = () => {
                   onClick={() => alert(`Toggled ${item.name} status.`)}
                   className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all border shrink-0 ${
                     isActive
-                      ? "bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-300 dark:border-slate-700 hover:bg-slate-300"
-                      : "bg-sky-600 text-white border-sky-500 hover:bg-sky-700"
+                      ? "bg-[#EEF6F9] text-[#17324D] border-[#DCEAF0] hover:bg-[#DCEAF0]"
+                      : "bg-[#20B8C8] text-white border-[#20B8C8] hover:bg-[#1CA6B4]"
                   }`}
                 >
                   {isActive ? "Pause Gateway" : "Activate Gateway"}
