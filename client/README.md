@@ -1,13 +1,26 @@
-# AyuDrishti | AI-Powered Clinical History Platform (SIH 2026)
+# AyuDrishti | AI-Powered Clinical History Platform
 
 > **Hospital Information System (HIS) & AI Clinical History Intake Workstation**  
-> *Built for Smart India Hackathon (SIH 2026) — Problem Statement: Multi-lingual AI-Assisted Clinical History Intake & Triage Kiosk.*
+> *Multi-lingual AI-Assisted Clinical History Intake, OCR Document Extraction, and Physician Triage Workstation.*
 
 ---
 
 ## 📌 Executive Summary & Objectives
 
 **AyuDrishti** is a multi-lingual, accessible, kiosk-driven clinical history collection platform designed for outpatient departments (OPD) in hospitals. It uses simulated AI voice interactions and medical document OCR scanning to pre-fill patient health records, identify potential clinical red flags, and present structured electronic health records (EHR) to attending physicians for rapid triage.
+
+---
+
+## 🎨 Clinical Design System & Palette
+
+AyuDrishti uses a clean **Light Clinical Healthcare Palette** tailored for healthcare environments and high readability:
+
+- **Primary Background**: Pure White (`#FFFFFF`) & Light Clinical Blue (`#F5FAFC`)
+- **Card Surfaces**: Soft Blue-Gray (`#EEF6F9`)
+- **Primary Brand Accent**: Clinical Teal (`#20B8C8`)
+- **Secondary Brand Accent**: Healthcare Blue (`#2499D6`)
+- **Typography & Structural Text**: Dark Hospital Navy (`#17324D`) & Clinical Slate (`#536B7D`)
+- **Clinical Border**: Soft Light Blue Border (`#DCEAF0`)
 
 ---
 
@@ -25,7 +38,7 @@
 
 ### 1. Patient Intake Kiosk Flow (`/patient/*`)
 Mobile-first, touch-friendly, high-contrast, multi-lingual kiosk interface:
-- **`/patient/welcome`**: Kiosk landing screen with quick launcher for demo scenario.
+- **`/patient/welcome`**: Kiosk landing screen with quick start intake launcher.
 - **`/patient/language`**: High-contrast language selection supporting **Hindi (हिंदी)** and **English**.
 - **`/patient/identify`**: Patient registration pre-filled with ABHA ID (Ayushman Bharat Health Account).
 - **`/patient/consent`**: Digital consent for data privacy under ABDM M2/M3 and DPDP Act 2023 guidelines.
@@ -72,33 +85,10 @@ Enterprise clinical administration dashboard:
 
 ---
 
-## 🎯 Demo Scenario Data (Rajesh Kumar)
+## 🎨 Icons & Brand Assets
 
-| Clinical Field | Record Details |
-| :--- | :--- |
-| **Patient Name** | Rajesh Kumar |
-| **Age / Gender** | 46 years / Male |
-| **Language** | Hindi (हिंदी) |
-| **ABHA ID** | `91-4829-1029-4821` |
-| **Token Number** | `TK-402` |
-| **Chief Concern** | Chest pain for 3 days |
-| **Symptom Cluster** | Chest pain + Breathlessness + Sweating |
-| **Clinical Alert** | 🚨 **Potential Red Flag Detected** (Requires urgent clinical review) |
-| **Past History** | Essential Hypertension (2 years) |
-| **Current Medication** | Amlodipine 5 mg once daily |
-| **Documented Allergy** | Penicillin (Severe Anaphylactic Skin Rash) |
-| **Lab Findings** | Hemoglobin 9.2 g/dL (Low), Blood Pressure 148/92 mmHg (High) |
-| **AYUSH Prakriti** | Pitta-Kapha (Arjuna Ksheerapaka & Sarpagandha 250mg) |
-
----
-
-## 🎨 Design System & Dual Theme Engine
-
-- **Primary Color**: Medical Blue (`#0284c7` / `sky-600`) for active tabs and primary buttons.
-- **Secondary Color**: Healthcare Teal (`#0d9488` / `teal-600`) for clinical metadata.
-- **Light Theme**: White surfaces (`bg-white`), cool light gray background (`bg-slate-50`), dark navy text (`text-slate-900`).
-- **Dark Theme**: Deep navy background (`bg-slate-950`), slate surfaces (`bg-slate-900`), light text (`text-slate-100`).
-- **Theme Persistence**: Synced with `localStorage` (`ayudrishti_theme`) and toggled via Sun/Moon button in the header.
+- **Brand Favicon**: SVG emblem combining stylized letter "A" (`#20B8C8`) with a clinical medical cross (`#2499D6`) on a clean white background ([`public/favicon.svg`](file:///c:/Users/aabha/Documents/Healthstory/client/public/favicon.svg)).
+- **Centralized Icon Engine**: Centralized icon abstraction in [`src/lib/icons.jsx`](file:///c:/Users/aabha/Documents/Healthstory/client/src/lib/icons.jsx) providing 35+ Lucide-style lightweight SVG icons (including `Bell`, `ShieldAlert`, `Stethoscope`, `Activity`, `Heart`, `Sparkles`, etc.).
 
 ---
 
@@ -109,18 +99,20 @@ c:\Users\aabha\Documents\Healthstory\client\
 ├── index.html
 ├── package.json
 ├── vite.config.js
+├── public/
+│   └── favicon.svg                   # AyuDrishti Brand SVG Favicon
 └── src/
     ├── main.jsx
     ├── App.jsx                       # 14 Routes Router Configuration
     ├── index.css                     # Tailwind CSS & Clinical Tokens
     ├── lib/
-    │   ├── icons.jsx                 # Lucide SVG Icon Components
+    │   ├── icons.jsx                 # Centralized Lucide SVG Icon Components
     │   ├── router.jsx                # Client-Side Routing Abstraction
     │   ├── recharts.jsx              # Responsive SVG Charting Engine
     │   ├── react-hook-form.js        # Form Hook Utility
     │   └── zustand.js                # State Store Creator
     ├── data/
-    │   ├── mockPatients.js           # Rajesh Kumar & Queue Data
+    │   ├── mockPatients.js           # Patient Records & Queue Data
     │   ├── translations.js           # Hindi & English Dictionary
     │   ├── mockQuestions.js          # Adaptive Interview Trees
     │   └── mockSystem.js             # Admin & Integration Mocks
@@ -131,10 +123,10 @@ c:\Users\aabha\Documents\Healthstory\client\
     │   ├── usePatientStore.js        # Active Kiosk Session Store
     │   ├── useDoctorStore.js         # Triage Queue & Doctor Notes Store
     │   ├── useAdminStore.js          # Admin Metrics & Model Store
-    │   └── useThemeStore.js          # Light/Dark Theme Store (localStorage)
+    │   └── useThemeStore.js          # Light Clinical Theme Store
     ├── components/
     │   ├── common/
-    │   │   ├── Header.jsx            # Top Bar with Theme & Language Toggles
+    │   │   ├── Header.jsx            # Top Bar with Language & Navigation
     │   │   ├── Sidebar.jsx           # Workstation Left Navigation Sidebar
     │   │   ├── Footer.jsx            # Clinical Disclaimer Banner
     │   │   ├── ProgressBar.jsx       # Patient Step Tracker Bar
@@ -165,7 +157,7 @@ c:\Users\aabha\Documents\Healthstory\client\
 
 ---
 
-## 🛠️ How to Run locally
+## 🛠️ How to Run Locally
 
 ### 1. Install Dependencies
 ```bash
@@ -181,9 +173,3 @@ npm run dev
 ```bash
 npm run build
 ```
-
----
-
-## 📜 License & Acknowledgments
-- **Event**: Smart India Hackathon (SIH 2026)
-- **Domain**: AI-Powered Healthcare Intake & Clinical Decision Support Systems
