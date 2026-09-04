@@ -23,44 +23,44 @@ export const ConsentStep = () => {
         
         {/* Header */}
         <div className="text-center mb-6">
-          <div className="w-12 h-12 rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800 mx-auto flex items-center justify-center mb-3">
+          <div className="w-12 h-12 rounded-xl bg-[#20B8C8]/10 text-[#20B8C8] border border-[#20B8C8]/20 mx-auto flex items-center justify-center mb-3">
             <Shield className="w-6 h-6" />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#17324D]">
             {t.consentTitle}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 font-medium">
+          <p className="text-xs sm:text-sm text-[#536B7D] mt-1 font-medium">
             Ayushman Bharat Digital Mission (ABDM) Data Privacy Terms
           </p>
         </div>
 
         {/* Consent Information Card */}
-        <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 mb-6">
+        <div className="bg-white p-6 rounded-2xl border border-[#DCEAF0] shadow-xs space-y-4 mb-6">
           
-          <div className="flex items-start gap-3 p-3 bg-slate-50 dark:bg-slate-950 rounded-lg border border-slate-200 dark:border-slate-800">
-            <Lock className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0 mt-0.5" />
-            <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+          <div className="flex items-start gap-3 p-3 bg-[#F5FAFC] rounded-xl border border-[#DCEAF0]">
+            <Lock className="w-4 h-4 text-[#20B8C8] shrink-0 mt-0.5" />
+            <p className="text-xs text-[#536B7D] leading-relaxed font-medium">
               Your health history is encrypted and securely saved under ABDM M2/M3 standards for clinical review by hospital doctors.
             </p>
           </div>
 
-          <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-950/40 rounded-lg border border-amber-200 dark:border-amber-800/60 text-amber-900 dark:text-amber-200">
-            <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-            <p className="text-xs leading-relaxed">
-              <strong className="font-bold block mb-0.5">Non-Diagnostic AI Assistant:</strong>
+          <div className="flex items-start gap-3 p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900">
+            <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+            <p className="text-xs leading-relaxed text-amber-800">
+              <strong className="font-bold block mb-0.5 text-amber-900">Non-Diagnostic AI Assistant:</strong>
               The AI collects history only. The system is <strong>not a doctor</strong> and will not diagnose your condition.
             </p>
           </div>
 
           {/* Interactive Consent Checkbox */}
-          <label className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border-2 border-sky-600/40 cursor-pointer hover:border-sky-500 transition-all select-none">
+          <label className="flex items-start gap-3 p-4 rounded-xl bg-[#F5FAFC] border-2 border-[#20B8C8] cursor-pointer hover:border-[#20B8C8] transition-all select-none">
             <input
               type="checkbox"
               checked={consentGiven}
               onChange={(e) => setConsent(e.target.checked)}
-              className="w-5 h-5 rounded border-slate-300 text-sky-600 focus:ring-sky-500 shrink-0 mt-0.5"
+              className="w-5 h-5 rounded border-slate-300 text-[#20B8C8] focus:ring-[#20B8C8] shrink-0 mt-0.5"
             />
-            <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white leading-snug">
+            <span className="text-xs sm:text-sm font-bold text-[#17324D] leading-snug">
               {t.acceptConsent}
             </span>
           </label>

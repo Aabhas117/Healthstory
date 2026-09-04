@@ -9,14 +9,15 @@ export const IntakeButton = ({
   disabled = false,
   ...props 
 }) => {
-  const baseClasses = 'intake-btn w-full inline-flex items-center justify-center gap-2 font-bold rounded-xl transition-all duration-150 shadow-xs active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none text-sm sm:text-base tracking-tight focus:outline-none focus:ring-2 focus:ring-sky-500/40 cursor-pointer';
+  const baseClasses = 'intake-btn w-full inline-flex items-center justify-center gap-2 font-bold rounded-xl transition-all duration-150 shadow-xs active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none text-sm sm:text-base tracking-tight focus:outline-none focus:ring-2 focus:ring-[#20B8C8]/40 cursor-pointer';
   
   const variants = {
-    primary: 'bg-sky-600 hover:bg-sky-700 text-white shadow-xs border border-sky-500',
-    secondary: 'bg-white dark:bg-slate-900 text-slate-800 dark:text-white border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-xs',
-    teal: 'bg-teal-600 hover:bg-teal-700 text-white shadow-xs border border-teal-500',
-    danger: 'bg-red-600 hover:bg-red-700 text-white shadow-xs border border-red-500',
-    accent: 'bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white border border-slate-800 dark:border-slate-200'
+    primary: 'bg-[#20B8C8] hover:bg-[#1A9FA9] text-white shadow-xs border border-[#1FAAB9]',
+    secondary: 'bg-white dark:bg-slate-900 text-[#17324D] dark:text-white border border-[#DCEAF0] dark:border-slate-700 hover:bg-[#F5FAFC] dark:hover:bg-slate-800 shadow-xs',
+    teal: 'bg-[#20B8C8] hover:bg-[#1A9FA9] text-white shadow-xs border border-[#1FAAB9]',
+    blue: 'bg-[#2499D6] hover:bg-[#1D82B8] text-white shadow-xs border border-[#208CC4]',
+    danger: 'bg-[#DC2626] hover:bg-[#B91C1C] text-white shadow-xs border border-[#B91C1C]',
+    accent: 'bg-[#17324D] dark:bg-slate-100 text-white dark:text-[#17324D] hover:bg-[#0F2338] dark:hover:bg-white border border-[#17324D] dark:border-slate-200'
   };
 
   const sizes = {

@@ -7,7 +7,7 @@ export const AdminLayout = ({ children }) => {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans">
+    <div className="min-h-screen flex bg-[#F5FAFC] text-[#17324D] font-sans selection:bg-[#20B8C8] selection:text-white">
       
       {/* Left Sidebar */}
       <Sidebar 

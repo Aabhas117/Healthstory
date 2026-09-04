@@ -72,7 +72,7 @@ export const Sidebar = ({
 
   return (
     <aside
-      className={`w-64 shrink-0 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col justify-between transition-all ${
+      className={`w-64 shrink-0 bg-[#EEF6F9] dark:bg-slate-900 border-r border-[#DCEAF0] dark:border-slate-800 flex flex-col justify-between transition-all ${
         isMobileOpen
           ? "block fixed inset-y-0 left-0 z-50 shadow-2xl"
           : "hidden md:flex"
@@ -84,19 +84,19 @@ export const Sidebar = ({
           onClick={() => handleNav("/")}
           className="flex items-center gap-3 px-2 cursor-pointer group"
         >
-          <div className="w-9 h-9 rounded-xl bg-sky-600 flex items-center justify-center text-white font-bold shadow-sm">
+          <div className="w-9 h-9 rounded-xl bg-[#20B8C8] flex items-center justify-center text-white font-bold shadow-xs">
             <Heart className="w-5 h-5 fill-white" />
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-extrabold text-lg text-slate-900 dark:text-white tracking-tight">
+              <span className="font-extrabold text-lg text-[#17324D] dark:text-white tracking-tight">
                 AyuDrishti
               </span>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
-                PRO
+              <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-white text-[#20B8C8] border border-[#DCEAF0]">
+                CLINICAL
               </span>
             </div>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+            <p className="text-[11px] text-[#536B7D] dark:text-slate-400 font-medium">
               Clinical History &amp; Triage
             </p>
           </div>
@@ -105,7 +105,7 @@ export const Sidebar = ({
         {/* Navigation Section */}
         <nav className="space-y-4">
           <div>
-            <span className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-2">
+            <span className="px-3 text-[10px] font-extrabold uppercase tracking-wider text-[#7A8D9D] dark:text-slate-500 block mb-2">
               Clinical Workstation
             </span>
             <div className="space-y-1">
@@ -120,8 +120,8 @@ export const Sidebar = ({
                       onClick={() => handleNav(item.path)}
                       className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                         isActive
-                          ? "bg-sky-600 text-white shadow-sm font-bold"
-                          : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/80"
+                          ? "bg-[#20B8C8] text-white shadow-xs font-bold"
+                          : "text-[#17324D] dark:text-slate-300 hover:bg-white/80 dark:hover:bg-slate-800/80"
                       }`}
                     >
                       <div className="flex items-center gap-2.5">
@@ -136,7 +136,7 @@ export const Sidebar = ({
           </div>
 
           <div>
-            <span className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-2">
+            <span className="px-3 text-[10px] font-extrabold uppercase tracking-wider text-[#7A8D9D] dark:text-slate-500 block mb-2">
               Administration &amp; Security
             </span>
             <div className="space-y-1">
@@ -151,8 +151,8 @@ export const Sidebar = ({
                       onClick={() => handleNav(item.path)}
                       className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                         isActive
-                          ? "bg-sky-600 text-white shadow-sm font-bold"
-                          : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/80"
+                          ? "bg-[#20B8C8] text-white shadow-xs font-bold"
+                          : "text-[#17324D] dark:text-slate-300 hover:bg-white/80 dark:hover:bg-slate-800/80"
                       }`}
                     >
                       <div className="flex items-center gap-2.5">
@@ -167,7 +167,7 @@ export const Sidebar = ({
           </div>
 
           <div>
-            <span className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-2">
+            <span className="px-3 text-[10px] font-extrabold uppercase tracking-wider text-[#7A8D9D] dark:text-slate-500 block mb-2">
               Patient Intake
             </span>
             <div className="space-y-1">
@@ -182,12 +182,12 @@ export const Sidebar = ({
                       onClick={() => handleNav(item.path)}
                       className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                         isActive
-                          ? "bg-teal-600 text-white shadow-sm font-bold"
-                          : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/80"
+                          ? "bg-[#2499D6] text-white shadow-xs font-bold"
+                          : "text-[#17324D] dark:text-slate-300 hover:bg-white/80 dark:hover:bg-slate-800/80"
                       }`}
                     >
                       <div className="flex items-center gap-2.5">
-                        <Icon className="w-4 h-4 text-teal-500 dark:text-teal-400" />
+                        <Icon className="w-4 h-4 text-[#2499D6]" />
                         <span>{item.label}</span>
                       </div>
                       {isActive && <ChevronRight className="w-3.5 h-3.5" />}
@@ -200,15 +200,15 @@ export const Sidebar = ({
       </div>
 
       {/* Hospital Footer Info */}
-      <div className="p-4 border-t border-slate-200 dark:border-slate-800 text-xs space-y-2">
-        <div className="bg-slate-50 dark:bg-slate-850 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
-          <span className="text-[10px] text-slate-400 block font-bold uppercase">
-            Hospital Facility
+      <div className="p-4 border-t border-[#DCEAF0] dark:border-slate-800 text-xs space-y-2">
+        <div className="bg-white dark:bg-slate-850 p-3 rounded-xl border border-[#DCEAF0] dark:border-slate-800 shadow-xs">
+          <span className="text-[10px] text-[#7A8D9D] block font-bold uppercase">
+            Facility / OPD Unit
           </span>
-          <strong className="text-slate-900 dark:text-white font-bold text-xs">
+          <strong className="text-[#17324D] dark:text-white font-bold text-xs">
             OPD Cardiology Unit A
           </strong>
-          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+          <p className="text-[11px] text-[#536B7D] dark:text-slate-400 mt-0.5">
             District Civil Hospital
           </p>
         </div>

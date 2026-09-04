@@ -97,15 +97,15 @@ export const InterviewStep = () => {
         )}
 
         {/* Voice Assistant Module */}
-        <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm text-center">
+        <div className="bg-white p-6 rounded-2xl border border-[#DCEAF0] shadow-xs text-center">
           <VoiceWaveAnimation
             isRecording={isRecording}
             onToggle={handleToggleRecording}
           />
 
           {isProcessingAudio && (
-            <div className="flex items-center justify-center gap-2 text-sky-600 dark:text-sky-400 text-xs font-semibold mt-2">
-              <Sparkles className="w-4 h-4 animate-spin" />
+            <div className="flex items-center justify-center gap-2 text-[#20B8C8] text-xs font-semibold mt-2">
+              <MessageSquare className="w-4 h-4 animate-spin" />
               <span>Transcribing speech into clinical terms...</span>
             </div>
           )}
@@ -113,12 +113,12 @@ export const InterviewStep = () => {
 
         {/* Adaptive Question Card */}
         {currentQ && (
-          <div className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
-            <div className="flex items-center gap-2 text-[11px] font-bold text-sky-700 dark:text-sky-400 uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" />
+          <div className="bg-white p-5 rounded-2xl border border-[#DCEAF0] space-y-3 shadow-xs">
+            <div className="flex items-center gap-2 text-[11px] font-bold text-[#20B8C8] uppercase tracking-wider">
+              <MessageSquare className="w-3.5 h-3.5" />
               <span>Adaptive Question ({currentQuestionIndex + 1}/{MOCK_QUESTIONS.length})</span>
             </div>
-            <h2 className="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white">
+            <h2 className="text-base sm:text-lg font-extrabold text-[#17324D]">
               {language === 'hi' ? currentQ.questionHi : currentQ.questionEn}
             </h2>
 
@@ -127,10 +127,10 @@ export const InterviewStep = () => {
                 <button
                   key={idx}
                   onClick={() => handleSelectOption(opt, currentQ.symptomKey)}
-                  className="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 text-left font-semibold text-xs text-slate-800 dark:text-slate-200 hover:border-sky-500 transition-all flex items-center justify-between kiosk-btn"
+                  className="p-3 rounded-xl bg-[#F5FAFC] hover:bg-[#EEF6F9] border border-[#DCEAF0] text-left font-semibold text-xs text-[#17324D] hover:border-[#20B8C8] transition-all flex items-center justify-between kiosk-btn"
                 >
                   <span>{opt}</span>
-                  <Check className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+                  <Check className="w-4 h-4 text-[#20B8C8]" />
                 </button>
               ))}
             </div>
@@ -138,8 +138,8 @@ export const InterviewStep = () => {
         )}
 
         {/* Touch Symptom Selector Chips */}
-        <div className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
-          <h3 className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+        <div className="bg-white p-5 rounded-2xl border border-[#DCEAF0] space-y-3 shadow-xs">
+          <h3 className="text-xs font-bold text-[#536B7D] uppercase tracking-wider">
             {t.symptomsTitle}
           </h3>
 
@@ -157,10 +157,10 @@ export const InterviewStep = () => {
                 <button
                   key={sym.id}
                   onClick={() => toggleSymptom(sym.id)}
-                  className={`px-3.5 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
                     isSelected
-                      ? 'bg-red-600 text-white shadow-sm'
-                      : 'bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-200'
+                      ? 'bg-[#20B8C8] text-white shadow-xs'
+                      : 'bg-[#F5FAFC] text-[#536B7D] border border-[#DCEAF0] hover:bg-[#EEF6F9]'
                   }`}
                 >
                   {isSelected && <Check className="w-3.5 h-3.5 stroke-[3]" />}

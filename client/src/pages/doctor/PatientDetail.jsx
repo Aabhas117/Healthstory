@@ -109,7 +109,7 @@ export const PatientDetail = () => {
         <div className="flex items-center justify-between">
           <button
             onClick={() => navigate('/doctor/dashboard')}
-            className="flex items-center gap-2 text-xs font-bold text-sky-700 dark:text-sky-400 hover:underline bg-white dark:bg-slate-900 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm"
+            className="flex items-center gap-2 text-xs font-bold text-[#20B8C8] hover:underline bg-white px-3.5 py-2 rounded-xl border border-[#DCEAF0] shadow-xs"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Triage Queue</span>
@@ -118,13 +118,13 @@ export const PatientDetail = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={() => alert(`Printing Official EHR summary for ${patient.name}...`)}
-              className="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 shadow-sm"
+              className="px-3 py-1.5 rounded-xl bg-white border border-[#DCEAF0] text-xs font-bold text-[#536B7D] hover:bg-[#F5FAFC] shadow-xs"
             >
               Print EHR
             </button>
             <button
               onClick={() => alert(`Exported ABDM FHIR record for ${patient.name}.`)}
-              className="px-3 py-1.5 rounded-lg bg-sky-600 text-white text-xs font-bold hover:bg-sky-700 shadow-sm"
+              className="px-3 py-1.5 rounded-xl bg-[#20B8C8] text-white text-xs font-bold hover:bg-[#1CA6B4] shadow-xs"
             >
               Export FHIR JSON
             </button>
@@ -132,22 +132,22 @@ export const PatientDetail = () => {
         </div>
 
         {/* Top Patient Clinical Banner */}
-        <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+        <div className="bg-white p-6 rounded-2xl border border-[#DCEAF0] shadow-xs space-y-4">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#EEF6F9] pb-4">
             
             <div className="flex items-start gap-4">
-              <div className={`w-14 h-14 rounded-xl flex items-center justify-center font-extrabold text-xl shrink-0 border ${
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center font-extrabold text-xl shrink-0 border ${
                 isRedFlag 
-                  ? 'bg-red-50 dark:bg-red-950/60 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800' 
-                  : 'bg-sky-50 dark:bg-sky-950 text-sky-700 dark:text-sky-300 border-sky-200 dark:border-sky-800'
+                  ? 'bg-red-50 text-red-700 border-red-200' 
+                  : 'bg-[#20B8C8]/10 text-[#20B8C8] border-[#20B8C8]/20'
               }`}>
                 {patient.tokenNumber || patient.id}
               </div>
 
               <div>
                 <div className="flex items-center gap-3 flex-wrap">
-                  <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">{patient.name}</h1>
-                  <span className="text-xs font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-full border border-slate-200 dark:border-slate-700">
+                  <h1 className="text-2xl font-extrabold text-[#17324D]">{patient.name}</h1>
+                  <span className="text-xs font-semibold text-[#536B7D] bg-[#F5FAFC] px-2.5 py-0.5 rounded-full border border-[#DCEAF0]">
                     {patient.age} yrs • {patient.gender}
                   </span>
                   
@@ -158,18 +158,18 @@ export const PatientDetail = () => {
                   />
                 </div>
 
-                <div className="flex flex-wrap gap-4 text-xs text-slate-500 dark:text-slate-400 mt-2 font-mono">
-                  <span>Encounter ID: <strong className="text-slate-900 dark:text-white">{patient.tokenNumber || patient.id}</strong></span>
-                  <span>ABHA ID: <strong className="text-sky-600 dark:text-sky-400">{patient.abhaId}</strong></span>
-                  <span>Mobile: <strong className="text-slate-800 dark:text-slate-200">{patient.mobile}</strong></span>
-                  <span>Language: <strong className="text-slate-800 dark:text-slate-200">{patient.language}</strong></span>
+                <div className="flex flex-wrap gap-4 text-xs text-[#536B7D] mt-2 font-mono">
+                  <span>Encounter ID: <strong className="text-[#17324D]">{patient.tokenNumber || patient.id}</strong></span>
+                  <span>ABHA ID: <strong className="text-[#20B8C8]">{patient.abhaId}</strong></span>
+                  <span>Mobile: <strong className="text-[#17324D]">{patient.mobile}</strong></span>
+                  <span>Language: <strong className="text-[#17324D]">{patient.language}</strong></span>
                 </div>
               </div>
             </div>
 
-            <div className="text-left md:text-right text-xs bg-slate-50 dark:bg-slate-950 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
-              <span className="text-slate-400 block text-[10px] uppercase font-bold">Consultation Status</span>
-              <strong className={`text-sm font-bold ${reviewApproved ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}`}>
+            <div className="text-left md:text-right text-xs bg-[#F5FAFC] p-3 rounded-2xl border border-[#DCEAF0]">
+              <span className="text-[#7A8D9D] block text-[10px] uppercase font-bold">Consultation Status</span>
+              <strong className={`text-sm font-bold ${reviewApproved ? 'text-emerald-600' : 'text-amber-600'}`}>
                 {reviewApproved ? 'Approved by Physician' : patient.status}
               </strong>
             </div>
@@ -187,30 +187,30 @@ export const PatientDetail = () => {
         )}
 
         {/* AI CLINICAL SUMMARY SECTION */}
-        <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
-          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+        <div className="bg-white p-6 rounded-2xl border border-[#DCEAF0] space-y-4 shadow-xs">
+          <div className="flex items-center justify-between border-b border-[#EEF6F9] pb-3">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-sky-600 dark:text-sky-400" />
-              <h2 className="text-base font-bold text-slate-900 dark:text-white">AI-Generated Clinical History Summary</h2>
+              <Stethoscope className="w-5 h-5 text-[#20B8C8]" />
+              <h2 className="text-base font-bold text-[#17324D]">AI-Generated Clinical History Summary</h2>
             </div>
-            <span className="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300 bg-sky-50 dark:bg-sky-950 px-2.5 py-1 rounded border border-sky-200 dark:border-sky-800">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#20B8C8] bg-[#20B8C8]/10 px-2.5 py-1 rounded-lg border border-[#20B8C8]/20">
               For Clinical Review Only
             </span>
           </div>
 
           <div>
-            <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Chief Complaint Narrative</h3>
-            <p className="text-sm text-slate-900 dark:text-slate-100 leading-relaxed font-medium bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+            <h3 className="text-xs font-bold text-[#536B7D] uppercase tracking-wider mb-1">Chief Complaint Narrative</h3>
+            <p className="text-sm text-[#17324D] leading-relaxed font-medium bg-[#F5FAFC] p-4 rounded-2xl border border-[#DCEAF0]">
               {patient.aiSummary?.chiefComplaint || patient.complaint}
             </p>
           </div>
 
           <div className="space-y-2 pt-1">
-            <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Synthesized Clinical Findings:</h3>
+            <h3 className="text-xs font-bold text-[#536B7D] uppercase tracking-wider">Synthesized Clinical Findings:</h3>
             <ul className="space-y-1.5 text-xs">
               {(patient.aiSummary?.keyFindings || []).map((finding, idx) => (
-                <li key={idx} className="flex items-center gap-2.5 bg-slate-50 dark:bg-slate-950 p-3 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 font-medium">
-                  <span className="w-2 h-2 rounded-full bg-sky-600 dark:bg-sky-400 shrink-0"></span>
+                <li key={idx} className="flex items-center gap-2.5 bg-[#F5FAFC] p-3 rounded-xl border border-[#DCEAF0] text-[#17324D] font-medium">
+                  <span className="w-2 h-2 rounded-full bg-[#20B8C8] shrink-0"></span>
                   <span>{finding}</span>
                 </li>
               ))}
@@ -219,13 +219,13 @@ export const PatientDetail = () => {
         </div>
 
         {/* AI CLINICAL FIELDS & VERIFICATION CONTROLS */}
-        <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
-          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+        <div className="bg-white p-6 rounded-2xl border border-[#DCEAF0] space-y-4 shadow-xs">
+          <div className="flex items-center justify-between border-b border-[#EEF6F9] pb-3">
             <div className="flex items-center gap-2">
-              <Shield className="w-5 h-5 text-sky-600 dark:text-sky-400" />
-              <h2 className="text-base font-bold text-slate-900 dark:text-white">AI Extracted Clinical Fields & Verification</h2>
+              <Shield className="w-5 h-5 text-[#20B8C8]" />
+              <h2 className="text-base font-bold text-[#17324D]">AI Extracted Clinical Fields & Verification</h2>
             </div>
-            <span className="text-xs text-slate-500 font-semibold">Doctor Verification Controls</span>
+            <span className="text-xs text-[#536B7D] font-semibold">Doctor Verification Controls</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -256,21 +256,21 @@ export const PatientDetail = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* LAB REPORTS SECTION */}
-          <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
-            <h2 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
-              <Activity className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+          <div className="bg-white p-6 rounded-2xl border border-[#DCEAF0] space-y-4 shadow-xs">
+            <h2 className="text-base font-bold text-[#17324D] flex items-center gap-2 border-b border-[#EEF6F9] pb-3">
+              <Activity className="w-5 h-5 text-[#20B8C8]" />
               <span>Laboratory Results & Vitals</span>
             </h2>
 
             <div className="space-y-2 text-xs">
               {(patient.labResults || []).map((lab, idx) => (
-                <div key={idx} className="flex items-center justify-between bg-slate-50 dark:bg-slate-950 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+                <div key={idx} className="flex items-center justify-between bg-[#F5FAFC] p-3 rounded-xl border border-[#DCEAF0]">
                   <div>
-                    <strong className="text-slate-900 dark:text-white font-bold block">{lab.name}</strong>
-                    <span className="text-[10px] text-slate-500">Ref: {lab.range} • {lab.source}</span>
+                    <strong className="text-[#17324D] font-bold block">{lab.name}</strong>
+                    <span className="text-[10px] text-[#536B7D]">Ref: {lab.range} • {lab.source}</span>
                   </div>
                   <div className="text-right">
-                    <span className="font-mono text-sm font-extrabold text-slate-900 dark:text-white mr-2">{lab.value} {lab.unit}</span>
+                    <span className="font-mono text-sm font-extrabold text-[#17324D] mr-2">{lab.value} {lab.unit}</span>
                     <StatusBadge 
                       status={lab.status === 'High' || lab.status === 'Low' ? 'warning' : 'success'} 
                       text={lab.status}
@@ -286,37 +286,37 @@ export const PatientDetail = () => {
           <div className="space-y-6">
             
             {/* DEDICATED ALLERGIES WARNING PANEL */}
-            <div className="bg-red-50 dark:bg-red-950/60 p-5 rounded-xl border-2 border-red-300 dark:border-red-800 space-y-2 shadow-sm">
+            <div className="bg-red-50 p-5 rounded-2xl border-2 border-red-200 space-y-2 shadow-xs">
               <div className="flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5 text-red-600 dark:text-red-400 shrink-0" />
-                <h3 className="font-extrabold text-sm text-red-900 dark:text-red-100">Documented Clinical Allergy Alert</h3>
+                <AlertTriangle className="w-5 h-5 text-red-600 shrink-0" />
+                <h3 className="font-extrabold text-sm text-red-900">Documented Clinical Allergy Alert</h3>
               </div>
               
               {(patient.allergiesList || []).map((alg, idx) => (
-                <div key={idx} className="bg-white dark:bg-slate-900 p-3 rounded-lg border border-red-200 dark:border-red-900 text-xs">
+                <div key={idx} className="bg-white p-3 rounded-xl border border-red-200 text-xs">
                   <div className="flex justify-between items-center">
-                    <strong className="text-red-700 dark:text-red-300 font-extrabold text-sm">{alg.allergen}</strong>
-                    <span className="text-[10px] uppercase font-bold text-red-600 bg-red-100 dark:bg-red-950 px-2 py-0.5 rounded border border-red-300">
+                    <strong className="text-red-700 font-extrabold text-sm">{alg.allergen}</strong>
+                    <span className="text-[10px] uppercase font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-200">
                       Reported
                     </span>
                   </div>
-                  <p className="text-slate-700 dark:text-slate-300 mt-1 font-medium">Reaction: {alg.reaction}</p>
-                  <span className="text-[10px] text-slate-400 mt-0.5 block">Source: {alg.source}</span>
+                  <p className="text-[#536B7D] mt-1 font-medium">Reaction: {alg.reaction}</p>
+                  <span className="text-[10px] text-[#7A8D9D] mt-0.5 block">Source: {alg.source}</span>
                 </div>
               ))}
             </div>
 
             {/* MEDICATIONS TABLE */}
-            <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
-                <FileText className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+            <div className="bg-white p-6 rounded-2xl border border-[#DCEAF0] space-y-3 shadow-xs">
+              <h3 className="text-sm font-bold text-[#17324D] flex items-center gap-2 border-b border-[#EEF6F9] pb-2">
+                <FileText className="w-4 h-4 text-[#20B8C8]" />
                 <span>Current Medications</span>
               </h3>
 
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-500 font-bold">
+                    <tr className="border-b border-[#DCEAF0] text-[#536B7D] font-bold">
                       <th className="py-2 px-2">Medication</th>
                       <th className="py-2 px-2">Dose</th>
                       <th className="py-2 px-2">Frequency</th>
@@ -324,13 +324,13 @@ export const PatientDetail = () => {
                       <th className="py-2 px-2 text-right">Status</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
+                  <tbody className="divide-y divide-[#EEF6F9]">
                     {(patient.medicationsList || []).map((med, idx) => (
-                      <tr key={idx} className="font-medium text-slate-800 dark:text-slate-200">
-                        <td className="py-2.5 px-2 font-bold text-sky-700 dark:text-sky-400">{med.name}</td>
+                      <tr key={idx} className="font-medium text-[#17324D]">
+                        <td className="py-2.5 px-2 font-bold text-[#20B8C8]">{med.name}</td>
                         <td className="py-2.5 px-2 font-mono">{med.dose}</td>
                         <td className="py-2.5 px-2">{med.frequency}</td>
-                        <td className="py-2.5 px-2 text-slate-500">{med.source}</td>
+                        <td className="py-2.5 px-2 text-[#536B7D]">{med.source}</td>
                         <td className="py-2.5 px-2 text-right">
                           <StatusBadge status={med.status === 'Verified' ? 'success' : 'warning'} text={med.status} size="sm" />
                         </td>
@@ -347,35 +347,35 @@ export const PatientDetail = () => {
 
         {/* AYUSH PROFILE SECTION */}
         {patient.ayushProfile && (
-          <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
-            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+          <div className="bg-white p-6 rounded-2xl border border-[#DCEAF0] space-y-4 shadow-xs">
+            <div className="flex items-center justify-between border-b border-[#EEF6F9] pb-3">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-teal-600 dark:text-teal-400" />
-                <h2 className="text-base font-bold text-slate-900 dark:text-white">AYUSH Profile & Traditional Medicine Intake</h2>
+                <Activity className="w-5 h-5 text-[#20B8C8]" />
+                <h2 className="text-base font-bold text-[#17324D]">AYUSH Profile & Traditional Medicine Intake</h2>
               </div>
-              <span className="text-xs font-bold text-teal-700 dark:text-teal-300 bg-teal-50 dark:bg-teal-950 px-2.5 py-1 rounded border border-teal-200 dark:border-teal-800">
+              <span className="text-xs font-bold text-[#20B8C8] bg-[#20B8C8]/10 px-2.5 py-1 rounded-lg border border-[#20B8C8]/20">
                 Prakriti: {patient.ayushProfile.prakriti}
               </span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-              <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1.5">
-                <h4 className="font-extrabold text-slate-900 dark:text-white uppercase tracking-wider text-[11px]">Herbal Medicines</h4>
-                <ul className="list-disc list-inside space-y-1 text-slate-700 dark:text-slate-300 font-medium">
+              <div className="bg-[#F5FAFC] p-4 rounded-xl border border-[#DCEAF0] space-y-1.5">
+                <h4 className="font-extrabold text-[#17324D] uppercase tracking-wider text-[11px]">Herbal Medicines</h4>
+                <ul className="list-disc list-inside space-y-1 text-[#536B7D] font-medium">
                   {patient.ayushProfile.herbalMedicines.map((m, i) => <li key={i}>{m}</li>)}
                 </ul>
               </div>
 
-              <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1.5">
-                <h4 className="font-extrabold text-slate-900 dark:text-white uppercase tracking-wider text-[11px]">AYUSH Treatments</h4>
-                <ul className="list-disc list-inside space-y-1 text-slate-700 dark:text-slate-300 font-medium">
+              <div className="bg-[#F5FAFC] p-4 rounded-xl border border-[#DCEAF0] space-y-1.5">
+                <h4 className="font-extrabold text-[#17324D] uppercase tracking-wider text-[11px]">AYUSH Treatments</h4>
+                <ul className="list-disc list-inside space-y-1 text-[#536B7D] font-medium">
                   {patient.ayushProfile.ayushTreatments.map((m, i) => <li key={i}>{m}</li>)}
                 </ul>
               </div>
 
-              <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1.5">
-                <h4 className="font-extrabold text-slate-900 dark:text-white uppercase tracking-wider text-[11px]">Diet & Remedies</h4>
-                <ul className="list-disc list-inside space-y-1 text-slate-700 dark:text-slate-300 font-medium">
+              <div className="bg-[#F5FAFC] p-4 rounded-xl border border-[#DCEAF0] space-y-1.5">
+                <h4 className="font-extrabold text-[#17324D] uppercase tracking-wider text-[11px]">Diet & Remedies</h4>
+                <ul className="list-disc list-inside space-y-1 text-[#536B7D] font-medium">
                   {patient.ayushProfile.dietaryPractices.map((m, i) => <li key={i}>{m}</li>)}
                   {patient.ayushProfile.traditionalRemedies.map((m, i) => <li key={i}>{m}</li>)}
                 </ul>
@@ -385,30 +385,30 @@ export const PatientDetail = () => {
         )}
 
         {/* SOURCE DOCUMENTS CARDS */}
-        <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
-          <h2 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
-            <FileText className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+        <div className="bg-white p-6 rounded-2xl border border-[#DCEAF0] space-y-4 shadow-xs">
+          <h2 className="text-base font-bold text-[#17324D] flex items-center gap-2 border-b border-[#EEF6F9] pb-3">
+            <FileText className="w-5 h-5 text-emerald-600" />
             <span>Uploaded Source Documents & Evidence</span>
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {(patient.documents || []).map((doc) => (
-              <div key={doc.id} className="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-xs">
+              <div key={doc.id} className="bg-[#F5FAFC] p-4 rounded-xl border border-[#DCEAF0] space-y-3 shadow-xs">
                 <div className="flex items-center justify-between">
-                  <strong className="text-sm font-extrabold text-slate-900 dark:text-white">{doc.name}</strong>
-                  <span className="text-[10px] font-bold uppercase bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded border border-emerald-300">
+                  <strong className="text-sm font-extrabold text-[#17324D]">{doc.name}</strong>
+                  <span className="text-[10px] font-bold uppercase bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">
                     {doc.type}
                   </span>
                 </div>
 
-                <p className="text-xs text-slate-600 dark:text-slate-400 font-mono bg-white dark:bg-slate-900 p-2.5 rounded-lg border border-slate-200 dark:border-slate-800">
+                <p className="text-xs text-[#536B7D] font-mono bg-white p-2.5 rounded-lg border border-[#DCEAF0]">
                   "{doc.snippet || 'Extracted medical record text...'}"
                 </p>
 
                 <div className="flex items-center gap-2 pt-1">
                   <button
                     onClick={() => handleOpenEvidence(doc.id)}
-                    className="flex-1 py-1.5 px-3 rounded-lg bg-sky-600 text-white font-bold text-xs hover:bg-sky-700 shadow-xs flex items-center justify-center gap-1"
+                    className="flex-1 py-1.5 px-3 rounded-xl bg-[#20B8C8] text-white font-bold text-xs hover:bg-[#1CA6B4] shadow-xs flex items-center justify-center gap-1"
                   >
                     <Eye className="w-3.5 h-3.5" />
                     <span>Open Evidence Drawer</span>
@@ -420,9 +420,9 @@ export const PatientDetail = () => {
         </div>
 
         {/* PHYSICIAN NOTES & CLINICAL APPROVAL */}
-        <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
-          <h2 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            <Stethoscope className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+        <div className="bg-white p-6 rounded-2xl border border-[#DCEAF0] space-y-4 shadow-xs">
+          <h2 className="text-base font-bold text-[#17324D] flex items-center gap-2">
+            <Stethoscope className="w-5 h-5 text-[#20B8C8]" />
             <span>Attending Physician Clinical Notes & Final Validation</span>
           </h2>
 
@@ -431,21 +431,21 @@ export const PatientDetail = () => {
             value={doctorNotes}
             onChange={(e) => setDoctorNotes(e.target.value)}
             placeholder="Type clinical observations, ECG orders, or physician notes..."
-            className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-sky-500 font-medium"
+            className="w-full p-3.5 rounded-xl bg-[#F5FAFC] border border-[#DCEAF0] text-[#17324D] text-xs focus:outline-none focus:border-[#20B8C8] font-medium"
           />
 
           <div className="flex items-center justify-between pt-2">
-            <span className="text-xs text-slate-500 dark:text-slate-400">
+            <span className="text-xs text-[#536B7D]">
               * Validates history for official hospital EMR record.
             </span>
 
             <button
               onClick={handleApprove}
               disabled={reviewApproved}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-extrabold text-xs transition-all shadow-sm ${
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-extrabold text-xs transition-all shadow-xs ${
                 reviewApproved
-                  ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800 cursor-default'
-                  : 'bg-sky-600 hover:bg-sky-700 text-white'
+                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 cursor-default'
+                  : 'bg-[#20B8C8] hover:bg-[#1CA6B4] text-white'
               }`}
             >
               <CheckCircle className="w-4 h-4" />

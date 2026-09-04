@@ -42,13 +42,13 @@ export const DocumentsStep = () => {
         
         {/* Header */}
         <div className="text-center">
-          <div className="w-12 h-12 rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800 mx-auto flex items-center justify-center mb-3">
+          <div className="w-12 h-12 rounded-xl bg-[#20B8C8]/10 text-[#20B8C8] border border-[#20B8C8]/20 mx-auto flex items-center justify-center mb-3">
             <Upload className="w-6 h-6" />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#17324D]">
             {t.documentUploadTitle}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 font-medium">
+          <p className="text-xs sm:text-sm text-[#536B7D] mt-1 font-medium">
             Upload old prescriptions or lab reports to auto-extract medications
           </p>
         </div>
@@ -57,62 +57,62 @@ export const DocumentsStep = () => {
         {isUploadingDoc ? (
           <ScannerAnimation isScanning={true} />
         ) : (
-          <label className="border-2 border-dashed border-sky-300 dark:border-sky-800 hover:border-sky-500 bg-white dark:bg-slate-900 rounded-xl p-6 text-center cursor-pointer block transition-all shadow-sm group">
+          <label className="border-2 border-dashed border-[#20B8C8]/40 hover:border-[#20B8C8] bg-white rounded-2xl p-6 text-center cursor-pointer block transition-all shadow-xs group">
             <input
               type="file"
               accept="image/*,.pdf"
               onChange={handleFileUpload}
               className="hidden"
             />
-            <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950 text-sky-600 dark:text-sky-400 border border-sky-200 dark:border-sky-800 mx-auto flex items-center justify-center mb-2">
+            <div className="w-12 h-12 rounded-xl bg-[#F5FAFC] text-[#20B8C8] border border-[#DCEAF0] mx-auto flex items-center justify-center mb-2">
               <Upload className="w-6 h-6" />
             </div>
-            <p className="font-extrabold text-base text-slate-900 dark:text-white mb-0.5">
+            <p className="font-extrabold text-base text-[#17324D] mb-0.5">
               {t.uploadPrompt}
             </p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              Supports PDF, PNG, JPG (e.g. Previous Prescription Cardiology)
+            <p className="text-xs text-[#536B7D]">
+              Supports PDF, PNG, JPG (e.g. Previous Medical Records / Prescriptions)
             </p>
           </label>
         )}
 
         {/* Processed Documents List */}
         <div className="space-y-2">
-          <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-            <FileText className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+          <h3 className="text-xs font-bold text-[#536B7D] uppercase tracking-wider flex items-center gap-1.5">
+            <FileText className="w-4 h-4 text-[#20B8C8]" />
             <span>Extracted Medical Records ({uploadedDocuments.length})</span>
           </h3>
 
           {uploadedDocuments.map((doc) => (
             <div
               key={doc.id}
-              className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm"
+              className="bg-white p-4 rounded-2xl border border-[#DCEAF0] space-y-2 shadow-xs"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 flex items-center justify-center font-bold">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
                     <CheckCircle className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-xs text-slate-900 dark:text-white">{doc.name}</h4>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">OCR Extraction Complete</p>
+                    <h4 className="font-bold text-xs text-[#17324D]">{doc.name}</h4>
+                    <p className="text-[11px] text-[#536B7D]">OCR Processed ✓ • 3 items extracted</p>
                   </div>
                 </div>
-                <span className="text-[10px] font-bold uppercase bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
+                <span className="text-[10px] font-bold uppercase bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">
                   Processed
                 </span>
               </div>
 
               {/* Extracted Key Items */}
               {doc.extractedData && (
-                <div className="bg-slate-50 dark:bg-slate-950 p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 text-xs space-y-1">
+                <div className="bg-[#F5FAFC] p-2.5 rounded-xl border border-[#DCEAF0] text-xs space-y-1">
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-500">Medication:</span>
-                    <strong className="text-sky-700 dark:text-sky-400">{doc.extractedData.medications.join(', ')}</strong>
+                    <span className="text-[#536B7D]">Medication:</span>
+                    <strong className="text-[#20B8C8]">{doc.extractedData.medications.join(', ')}</strong>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-500">Allergies:</span>
-                    <strong className="text-red-600 dark:text-red-400">{doc.extractedData.allergies.join(', ')}</strong>
+                    <span className="text-[#536B7D]">Allergies:</span>
+                    <strong className="text-red-600">{doc.extractedData.allergies.join(', ')}</strong>
                   </div>
                 </div>
               )}

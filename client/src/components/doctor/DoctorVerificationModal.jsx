@@ -24,20 +24,20 @@ export const DoctorVerificationModal = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
+      <div className="bg-white border border-[#DCEAF0] rounded-2xl max-w-lg w-full p-6 shadow-xl space-y-4">
         
         {/* Modal Header */}
-        <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+        <div className="flex items-center justify-between border-b border-[#EEF6F9] pb-3">
           <div className="flex items-center gap-2">
-            <Edit3 className="w-5 h-5 text-sky-600 dark:text-sky-400" />
-            <h3 className="font-extrabold text-base text-slate-900 dark:text-white">
+            <Edit3 className="w-5 h-5 text-[#20B8C8]" />
+            <h3 className="font-extrabold text-base text-[#17324D]">
               Verify Clinical Field: {field.label}
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+            className="p-1 rounded-lg text-[#7A8D9D] hover:text-[#17324D] hover:bg-[#F5FAFC]"
           >
             <X className="w-5 h-5" />
           </button>
@@ -47,18 +47,18 @@ export const DoctorVerificationModal = ({
         <form onSubmit={handleSave} className="space-y-4 text-xs">
           
           {/* Original Value Display */}
-          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
-            <span className="text-slate-400 font-bold uppercase tracking-wider block text-[10px]">
+          <div className="p-3 rounded-xl bg-[#F5FAFC] border border-[#DCEAF0]">
+            <span className="text-[#536B7D] font-bold uppercase tracking-wider block text-[10px]">
               AI-Extracted Original Value
             </span>
-            <span className="text-slate-800 dark:text-slate-200 font-mono text-xs font-semibold block mt-0.5">
+            <span className="text-[#17324D] font-mono text-xs font-semibold block mt-0.5">
               {field.originalValue || field.value}
             </span>
           </div>
 
           {/* Edited Value Input */}
           <div>
-            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-[#536B7D] uppercase tracking-wider mb-1">
               Physician Corrected Value
             </label>
             <input
@@ -66,13 +66,13 @@ export const DoctorVerificationModal = ({
               required
               value={editedValue}
               onChange={(e) => setEditedValue(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-semibold text-sm focus:outline-none focus:border-sky-500"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-[#F5FAFC] border border-[#DCEAF0] text-[#17324D] font-semibold text-sm focus:outline-none focus:border-[#20B8C8]"
             />
           </div>
 
           {/* Reason for Change */}
           <div>
-            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-[#536B7D] uppercase tracking-wider mb-1">
               Clinical Rationale / Reason for Correction
             </label>
             <textarea
@@ -81,22 +81,22 @@ export const DoctorVerificationModal = ({
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               placeholder="Type clinical reason for edit..."
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-sky-500"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-[#F5FAFC] border border-[#DCEAF0] text-[#17324D] text-xs focus:outline-none focus:border-[#20B8C8]"
             />
           </div>
 
           {/* Footer Actions */}
-          <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200 dark:border-slate-800">
+          <div className="flex items-center justify-end gap-2 pt-2 border-t border-[#EEF6F9]">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-200"
+              className="px-4 py-2 rounded-xl bg-[#F5FAFC] text-[#536B7D] border border-[#DCEAF0] font-bold hover:bg-[#EEF6F9]"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold flex items-center gap-1.5 shadow-sm"
+              className="px-4 py-2 rounded-xl bg-[#20B8C8] hover:bg-[#1CA6B4] text-white font-bold flex items-center gap-1.5 shadow-xs"
             >
               <Check className="w-4 h-4 stroke-[3]" />
               <span>Save & Verify Record</span>

@@ -3,14 +3,12 @@ import { useNavigate, useLocation } from "../../lib/router.jsx";
 import { usePatientStore } from "../../store/usePatientStore.js";
 import { useThemeStore } from "../../store/useThemeStore.js";
 import {
-  Stethoscope,
   Heart,
-  Settings,
-  Globe,
-  Phone,
   Search,
   User,
-  Eye,
+  Globe,
+  Bell,
+  Shield
 } from "../../lib/icons.jsx";
 
 export const Header = ({ onToggleMobileSidebar = () => {} }) => {
@@ -21,112 +19,91 @@ export const Header = ({ onToggleMobileSidebar = () => {} }) => {
 
   const isPatientPath = location.pathname.startsWith("/patient");
 
+  const navLinks = [
+    { label: "Patient Intake", path: "/patient/welcome" },
+    { label: "Clinical Workstation", path: "/doctor/dashboard" },
+    { label: "Administration", path: "/admin" },
+  ];
+
   return (
-    <header className="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 shadow-sm">
+    <header className="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-[#DCEAF0] dark:border-slate-800 text-[#17324D] dark:text-slate-100 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 gap-4">
-          {/* Mobile Sidebar Toggle & Mobile Logo */}
-          <div className="flex items-center gap-3">
+          
+          {/* Brand Logo & Navigation Links */}
+          <div className="flex items-center gap-6">
             <button
               onClick={onToggleMobileSidebar}
-              className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+              className="md:hidden p-2 rounded-lg text-[#536B7D] dark:text-slate-300 hover:bg-[#F5FAFC] dark:hover:bg-slate-800"
               aria-label="Toggle Navigation Sidebar"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
 
-            {/* Platform Brand (Visible on mobile or patient flow) */}
+            {/* Platform Brand Logo */}
             <div
               onClick={() => navigate("/")}
-              className="flex items-center gap-2.5 cursor-pointer md:hidden"
+              className="flex items-center gap-2.5 cursor-pointer"
             >
-              <div className="w-8 h-8 rounded-lg bg-sky-600 flex items-center justify-center text-white font-bold">
-                <Heart className="w-4 h-4 fill-white" />
+              <div className="w-9 h-9 rounded-xl bg-[#20B8C8] flex items-center justify-center text-white font-bold shadow-xs">
+                <Heart className="w-5 h-5 fill-white" />
               </div>
-              <span className="font-extrabold text-lg text-slate-900 dark:text-white tracking-tight">
-                AyuDrishti
-              </span>
+              <div className="flex flex-col">
+                <span className="font-extrabold text-xl text-[#17324D] dark:text-white tracking-tight leading-none">
+                  AyuDrishti
+                </span>
+                <span className="text-[10px] font-semibold text-[#536B7D] dark:text-slate-400 mt-0.5">
+                  Clinical History &amp; Triage
+                </span>
+              </div>
             </div>
+
+            {/* Desktop Top Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-1 pl-4 border-l border-[#DCEAF0] dark:border-slate-800">
+              {navLinks.map((link) => {
+                const isActive = location.pathname.startsWith(link.path);
+                return (
+                  <button
+                    key={link.path}
+                    onClick={() => navigate(link.path)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                      isActive
+                        ? "bg-[#E6F7F9] text-[#20B8C8] dark:bg-slate-800 dark:text-[#20B8C8]"
+                        : "text-[#536B7D] dark:text-slate-300 hover:text-[#17324D] dark:hover:text-white hover:bg-[#F5FAFC] dark:hover:bg-slate-800/60"
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                );
+              })}
+            </nav>
           </div>
 
-          {/* Clinical Workstation Search Bar (Visible on desktop) */}
+          {/* Search Bar (Visible on desktop clinical view) */}
           {!isPatientPath && (
-            <div className="hidden md:flex items-center flex-1 max-w-md relative">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <div className="hidden md:flex items-center flex-1 max-w-xs relative">
+              <Search className="w-4 h-4 text-[#7A8D9D] absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
-                placeholder="Search patient, encounter ID, diagnosis or ABHA..."
+                placeholder="Search patient, ABHA or encounter ID..."
                 onClick={() => navigate("/doctor/dashboard")}
-                className="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500"
+                className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-[#F5FAFC] dark:bg-slate-950 border border-[#DCEAF0] dark:border-slate-800 text-xs text-[#17324D] dark:text-slate-100 placeholder-[#7A8D9D] focus:outline-none focus:border-[#20B8C8]"
               />
             </div>
           )}
 
           {/* Right Action Controls */}
           <div className="flex items-center gap-3">
-            {/* Theme Toggle (Light <-> Dark) */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-xl text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 text-xs font-semibold"
-              title={`Switch to ${theme === "light" ? "Dark" : "Light"} Mode`}
-            >
-              {theme === "light" ? (
-                <>
-                  <svg
-                    className="w-4 h-4 text-slate-700"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                    />
-                  </svg>
-                  <span className="hidden sm:inline">Dark Theme</span>
-                </>
-              ) : (
-                <>
-                  <svg
-                    className="w-4 h-4 text-amber-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                    />
-                  </svg>
-                  <span className="hidden sm:inline">Light mode</span>
-                </>
-              )}
-            </button>
-
             {/* Language Toggle (Hindi / English) */}
-            <div className="flex items-center bg-slate-100 dark:bg-slate-800 rounded-xl p-1 border border-slate-200 dark:border-slate-700">
+            <div className="flex items-center bg-[#F5FAFC] dark:bg-slate-800 rounded-xl p-1 border border-[#DCEAF0] dark:border-slate-700">
               <button
                 onClick={() => setLanguage("hi")}
                 className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${
                   language === "hi"
-                    ? "bg-sky-600 text-white shadow-sm"
-                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+                    ? "bg-[#20B8C8] text-white shadow-xs"
+                    : "text-[#536B7D] dark:text-slate-400 hover:text-[#17324D] dark:hover:text-slate-200"
                 }`}
               >
                 हिंदी
@@ -135,8 +112,8 @@ export const Header = ({ onToggleMobileSidebar = () => {} }) => {
                 onClick={() => setLanguage("en")}
                 className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${
                   language === "en"
-                    ? "bg-sky-600 text-white shadow-sm"
-                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+                    ? "bg-[#20B8C8] text-white shadow-xs"
+                    : "text-[#536B7D] dark:text-slate-400 hover:text-[#17324D] dark:hover:text-slate-200"
                 }`}
               >
                 EN
@@ -147,16 +124,16 @@ export const Header = ({ onToggleMobileSidebar = () => {} }) => {
             {!isPatientPath && (
               <div
                 onClick={() => navigate("/doctor/dashboard")}
-                className="hidden sm:flex items-center gap-2 pl-2 border-l border-slate-200 dark:border-slate-800 cursor-pointer"
+                className="hidden sm:flex items-center gap-2 pl-2 border-l border-[#DCEAF0] dark:border-slate-800 cursor-pointer"
               >
-                <div className="w-8 h-8 rounded-full bg-sky-100 dark:bg-sky-950 border border-sky-300 dark:border-sky-800 text-sky-700 dark:text-sky-300 flex items-center justify-center font-bold text-xs">
+                <div className="w-8 h-8 rounded-full bg-[#E6F7F9] dark:bg-slate-800 border border-[#20B8C8]/30 text-[#20B8C8] flex items-center justify-center font-bold text-xs">
                   DR
                 </div>
                 <div className="text-left text-xs leading-none">
-                  <strong className="text-slate-900 dark:text-white font-bold block">
+                  <strong className="text-[#17324D] dark:text-white font-bold block">
                     Dr. V. Sharma
                   </strong>
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400">
+                  <span className="text-[10px] text-[#536B7D] dark:text-slate-400">
                     Cardiology OPD
                   </span>
                 </div>
