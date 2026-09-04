@@ -75,7 +75,7 @@ export const mockApi = {
       id: `P-${Date.now().toString().slice(-3)}`,
       tokenNumber,
       abhaId: patientData.abhaId || '91-4829-1029-4821',
-      name: patientData.name || 'Rajesh Kumar',
+      name: patientData.name || 'Ramesh Patel',
       age: patientData.age || 46,
       gender: patientData.gender || 'Male',
       language: patientData.language || 'Hindi',

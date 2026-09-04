@@ -1,31 +1,46 @@
-import React from 'react';
-import { AdminLayout } from '../../layouts/AdminLayout.jsx';
-import { useAdminStore } from '../../store/useAdminStore.js';
-import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from '../../lib/recharts.jsx';
-import { PageHeader } from '../../components/common/PageHeader.jsx';
-import { Activity, Shield, Sparkles, User, AlertTriangle, CheckCircle, FileText, Check } from '../../lib/icons.jsx';
+import React from "react";
+import { AdminLayout } from "../../layouts/AdminLayout.jsx";
+import { useAdminStore } from "../../store/useAdminStore.js";
+import {
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "../../lib/recharts.jsx";
+import { PageHeader } from "../../components/common/PageHeader.jsx";
+import {
+  Activity,
+  Shield,
+  Sparkles,
+  User,
+  AlertTriangle,
+  CheckCircle,
+  FileText,
+  Check,
+} from "../../lib/icons.jsx";
 
 export const AdminOverview = () => {
   const { metrics } = useAdminStore();
 
   const throughputData = [
-    { time: '08:00', total: 12, redFlags: 2 },
-    { time: '09:00', total: 28, redFlags: 4 },
-    { time: '10:00', total: 42, redFlags: 7 },
-    { time: '11:00', total: 35, redFlags: 3 },
-    { time: '12:00', total: 25, redFlags: 2 }
+    { time: "08:00", total: 12, redFlags: 2 },
+    { time: "09:00", total: 28, redFlags: 4 },
+    { time: "10:00", total: 42, redFlags: 7 },
+    { time: "11:00", total: 35, redFlags: 3 },
+    { time: "12:00", total: 25, redFlags: 2 },
   ];
 
   return (
     <AdminLayout>
       <div className="space-y-6">
-        
         {/* Page Header */}
         <PageHeader
           icon={Activity}
           title="System Administration & Metrics"
           subtitle="Hospital OPD intake throughput, AI field extraction performance, and audit compliance"
-          badgeText="System Governance"
+          badgeText="Administration & Security"
         />
 
         {/* 5 Admin KPI Metrics Cards Grid */}
@@ -95,17 +110,25 @@ export const AdminOverview = () => {
         <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-base font-bold text-slate-900 dark:text-white">Hourly Patient Intake Throughput</h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Total Kiosk Registrations vs Urgent Red Flags</p>
+              <h2 className="text-base font-bold text-slate-900 dark:text-white">
+                Hourly Patient Intake Throughput
+              </h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Total patient intake versus urgent review flags
+              </p>
             </div>
             <div className="flex items-center gap-4 text-xs">
               <div className="flex items-center gap-1.5">
                 <span className="w-3 h-3 rounded bg-sky-600"></span>
-                <span className="text-slate-700 dark:text-slate-300 font-semibold">Total Patients</span>
+                <span className="text-slate-700 dark:text-slate-300 font-semibold">
+                  Total Patients
+                </span>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="w-3 h-3 rounded bg-red-600"></span>
-                <span className="text-slate-700 dark:text-slate-300 font-semibold">Red Flags</span>
+                <span className="text-slate-700 dark:text-slate-300 font-semibold">
+                  Red Flags
+                </span>
               </div>
             </div>
           </div>
@@ -122,7 +145,6 @@ export const AdminOverview = () => {
             </ResponsiveContainer>
           </div>
         </div>
-
       </div>
     </AdminLayout>
   );

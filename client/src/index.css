@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @layer base {
   :root {
-    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
@@ -14,27 +15,29 @@
     color: #0f172a;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   html.dark body {
-    background-color: #090d16;
+    background-color: #0b1120;
     color: #f8fafc;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    letter-spacing: -0.02em;
   }
 }
 
-/* Clinical Workstation UI Utility Classes */
-.kiosk-btn {
-  min-height: 52px;
+/* Clinical Action & Touch Button Utilities */
+.kiosk-btn, .intake-btn {
+  min-height: 48px;
   touch-action: manipulation;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Custom Scrollbars */
+/* Medical Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -43,7 +46,7 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.4);
+  background: rgba(148, 163, 184, 0.35);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {

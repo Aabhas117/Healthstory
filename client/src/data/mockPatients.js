@@ -2,7 +2,7 @@ export const DEMO_PATIENT = {
   id: 'P-101',
   abhaId: '91-4829-1029-4821',
   tokenNumber: 'TK-402',
-  name: 'Rajesh Kumar',
+  name: 'Ramesh Patel',
   age: 46,
   gender: 'Male',
   language: 'Hindi',

@@ -1,30 +1,31 @@
-import React from 'react';
-import { PatientLayout } from '../../layouts/PatientLayout.jsx';
-import { useNavigate } from '../../lib/router.jsx';
-import { usePatientStore } from '../../store/usePatientStore.js';
-import { KioskButton } from '../../components/patient/KioskButton.jsx';
-import { TRANSLATIONS } from '../../data/translations.js';
-import { Heart, Sparkles, User, Mic, ArrowRight, Shield } from '../../lib/icons.jsx';
+import React from "react";
+import { PatientLayout } from "../../layouts/PatientLayout.jsx";
+import { useNavigate } from "../../lib/router.jsx";
+import { usePatientStore } from "../../store/usePatientStore.js";
+import { KioskButton } from "../../components/patient/KioskButton.jsx";
+import { TRANSLATIONS } from "../../data/translations.js";
+import {
+  Heart,
+  Sparkles,
+  User,
+  Mic,
+  ArrowRight,
+  Shield,
+} from "../../lib/icons.jsx";
 
 export const WelcomeStep = () => {
   const navigate = useNavigate();
-  const { language, loadDemoPreset, resetSession } = usePatientStore();
+  const { language, resetSession } = usePatientStore();
   const t = TRANSLATIONS[language] || TRANSLATIONS.en;
 
   const handleStartFresh = () => {
     resetSession();
-    navigate('/patient/language');
-  };
-
-  const handleLoadDemo = () => {
-    loadDemoPreset();
-    navigate('/patient/identify');
+    navigate("/patient/language");
   };
 
   return (
     <PatientLayout currentStep={1}>
       <div className="flex-1 flex flex-col items-center justify-center py-6 text-center">
-        
         {/* Medical Kiosk Emblem */}
         <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-sky-600 flex items-center justify-center text-white shadow-lg mb-6">
           <Heart className="w-12 h-12 fill-white" />
@@ -45,8 +46,12 @@ export const WelcomeStep = () => {
               <Mic className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-sm text-slate-900 dark:text-white">Voice Assistant</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Speak naturally in Hindi or English</p>
+              <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+                Voice Assistant
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                Speak naturally in Hindi or English
+              </p>
             </div>
           </div>
 
@@ -55,8 +60,12 @@ export const WelcomeStep = () => {
               <Sparkles className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-sm text-slate-900 dark:text-white">Smart Intake</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Adaptive questions for quick registration</p>
+              <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+                Smart Intake
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                Adaptive questions for quick registration
+              </p>
             </div>
           </div>
 
@@ -65,15 +74,19 @@ export const WelcomeStep = () => {
               <Shield className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-sm text-slate-900 dark:text-white">Clinical Review</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Attending doctor validates before visit</p>
+              <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+                Clinical Review
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                Attending doctor validates before visit
+              </p>
             </div>
           </div>
         </div>
 
         {/* Action Buttons */}
         <div className="w-full max-w-md space-y-3">
-          <KioskButton 
+          <KioskButton
             onClick={handleStartFresh}
             icon={ArrowRight}
             variant="primary"
@@ -81,17 +94,7 @@ export const WelcomeStep = () => {
           >
             {t.startKiosk}
           </KioskButton>
-
-          <KioskButton 
-            onClick={handleLoadDemo}
-            icon={User}
-            variant="secondary"
-            size="lg"
-          >
-            ⚡ {t.demoQuickStart}
-          </KioskButton>
         </div>
-
       </div>
     </PatientLayout>
   );

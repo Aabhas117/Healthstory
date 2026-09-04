@@ -95,7 +95,7 @@ export const CompleteStep = () => {
             variant="secondary"
             size="lg"
           >
-            Return to Kiosk Home
+            Return to Portal Home
           </KioskButton>
         </div>
 

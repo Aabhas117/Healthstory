@@ -1,56 +1,42 @@
 import { create } from '../lib/zustand.js';
-import { DEMO_PATIENT } from '../data/mockPatients.js';
 
 export const usePatientStore = create((set, get) => ({
   // Active state
-  language: 'hi', // 'hi' | 'en'
+  language: 'en', // 'en' | 'hi'
   currentStep: 1,
   
-  // Patient details
+  // Patient details - Clean empty initial state for fresh intake
   patientInfo: {
-    name: 'Rajesh Kumar',
-    age: 46,
+    name: '',
+    age: '',
     gender: 'Male',
-    mobile: '+91 98765 43210',
-    abhaId: '91-4829-1029-4821'
+    mobile: '',
+    abhaId: ''
   },
   
   // Consent
-  consentGiven: true,
+  consentGiven: false,
   
   // Clinical symptoms intake
-  complaint: 'Chest pain for 3 days',
-  symptoms: ['Chest pain', 'Breathlessness', 'Sweating'],
-  history: ['Hypertension'],
-  medication: 'Amlodipine 5 mg once daily',
-  allergies: ['Penicillin'],
+  complaint: '',
+  symptoms: [],
+  history: [],
+  medication: '',
+  allergies: [],
   
   // Voice & Document artifacts
-  transcriptHistory: [
-    { sender: 'ai', text: 'नमस्ते राजेश जी! आपको क्या परेशानी हो रही है?', textEn: 'Hello Rajesh! What symptoms are you experiencing?' },
-    { sender: 'patient', text: 'मुझे 3 दिनों से छाती में तेज दर्द हो रहा है, सांस फूल रही है और बहुत पसीना आ रहा है।', textEn: 'I have severe chest pain for 3 days, breathlessness, and profuse sweating.' }
-  ],
+  transcriptHistory: [],
   isRecording: false,
   isProcessingAudio: false,
   
-  uploadedDocuments: [
-    {
-      id: 'DOC-01',
-      name: 'Prescription_Cardiology.pdf',
-      processedAt: '2026-09-01T10:15:00Z',
-      extractedData: {
-        medications: ['Amlodipine 5 mg once daily'],
-        allergies: ['Penicillin']
-      }
-    }
-  ],
+  uploadedDocuments: [],
   isUploadingDoc: false,
   
   // Red Flag Alert evaluation
   redFlagAlert: {
-    isRedFlag: true,
-    title: 'Potential Red Flag Detected',
-    description: 'Triple symptom cluster (Chest Pain + Breathlessness + Sweating) in a hypertensive patient. Clinical review is recommended.'
+    isRedFlag: false,
+    title: '',
+    description: ''
   },
   
   // Submission Token
@@ -81,10 +67,10 @@ export const usePatientStore = create((set, get) => ({
       symptoms: updated,
       redFlagAlert: {
         isRedFlag,
-        title: isRedFlag ? 'Potential Red Flag Detected' : 'Standard Intake Priority',
+        title: isRedFlag ? 'Potential Red Flag Detected' : '',
         description: isRedFlag 
-          ? 'Symptom cluster (Chest Pain + Breathlessness/Sweating) detected. Clinical review is recommended.' 
-          : 'No emergency red flags detected.'
+          ? 'Triple symptom cluster (Chest pain + breathlessness + sweating) detected. Recommended action: Immediate physician assessment.' 
+          : ''
       }
     };
   }),
@@ -107,34 +93,22 @@ export const usePatientStore = create((set, get) => ({
   setIsUploadingDoc: (uploading) => set({ isUploadingDoc: uploading }),
   setSubmittedToken: (token) => set({ submittedToken: token }),
 
-  // Load standard Demo Scenario (Rajesh Kumar)
-  loadDemoPreset: () => set({
-    language: 'hi',
-    currentStep: 3, // Identify Step
-    patientInfo: {
-      name: DEMO_PATIENT.name,
-      age: DEMO_PATIENT.age,
-      gender: DEMO_PATIENT.gender,
-      mobile: DEMO_PATIENT.mobile,
-      abhaId: DEMO_PATIENT.abhaId
-    },
-    consentGiven: true,
-    complaint: DEMO_PATIENT.complaint,
-    symptoms: [...DEMO_PATIENT.symptoms],
-    history: [...DEMO_PATIENT.history],
-    medication: DEMO_PATIENT.medication,
-    allergies: [...DEMO_PATIENT.allergies],
-    redFlagAlert: {
-      isRedFlag: true,
-      title: 'Potential Red Flag Detected',
-      description: 'Triple symptom cluster (Chest Pain + Breathlessness + Sweating). Clinical review is recommended.'
-    }
-  }),
-
   resetSession: () => set({
     currentStep: 1,
+    patientInfo: {
+      name: '',
+      age: '',
+      gender: 'Male',
+      mobile: '',
+      abhaId: ''
+    },
+    consentGiven: false,
     symptoms: [],
     complaint: '',
+    history: [],
+    medication: '',
+    allergies: [],
+    transcriptHistory: [],
     uploadedDocuments: [],
     submittedToken: null,
     redFlagAlert: { isRedFlag: false, title: '', description: '' }

@@ -180,8 +180,9 @@ export const PatientDetail = () => {
         {/* RED FLAG PANEL */}
         {isRedFlag && (
           <RedFlagBanner 
-            title={patient.aiSummary.redFlagTitle || 'Potential Red Flag Detected'}
-            description={patient.aiSummary.redFlagDescription || 'Triple symptom cluster (Chest Pain + Breathlessness + Sweating) detected. Clinical review is recommended.'}
+            title="Potential red flag detected"
+            reason={patient.aiSummary.redFlagDescription || "Chest pain + breathlessness + sweating"}
+            action="Immediate physician assessment"
           />
         )}
 

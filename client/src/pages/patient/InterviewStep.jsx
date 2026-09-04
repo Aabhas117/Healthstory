@@ -90,8 +90,9 @@ export const InterviewStep = () => {
         {/* Urgent Red Flag Banner */}
         {redFlagAlert.isRedFlag && (
           <RedFlagBanner 
-            title={redFlagAlert.title}
-            description={redFlagAlert.description}
+            title={redFlagAlert.title || "Potential red flag detected"}
+            reason={redFlagAlert.description || "Chest pain + breathlessness + sweating"}
+            action="Immediate physician assessment"
           />
         )}
 

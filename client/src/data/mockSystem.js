@@ -12,7 +12,7 @@ export const MOCK_ADMIN_DATA = {
       id: 'AUD-901',
       timestamp: '2026-09-01T10:30:14Z',
       action: 'Patient Intake Submitted',
-      patientId: 'P-101 (Rajesh Kumar)',
+      patientId: 'P-101 (Ramesh Patel)',
       kioskId: 'Kiosk-04 (OPD Ground Floor)',
       redFlagFlagged: true,
       abdmConsentId: 'CONSENT-ABDM-88219'
@@ -21,7 +21,7 @@ export const MOCK_ADMIN_DATA = {
       id: 'AUD-902',
       timestamp: '2026-09-01T10:15:02Z',
       action: 'Prescription Document Uploaded & OCR Scanned',
-      patientId: 'P-101 (Rajesh Kumar)',
+      patientId: 'P-101 (Ramesh Patel)',
       kioskId: 'Kiosk-04 (OPD Ground Floor)',
       extractedFieldsCount: 3,
       abdmConsentId: 'CONSENT-ABDM-88219'
